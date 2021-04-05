@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Apache Airflow</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0,
+          user-scalable=no">
+    <meta name="author" content="Emmanuel Roux">
+    <meta name="description" content="Apache Airflow presentation">
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/white.css" id="theme">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+  </head>
+
+  <body>
+    <div class="reveal">
+      <header style="position: absolute;top: 50px; left: 100px; z-index:500;
+        font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
+      <div class="slides">
+
+        <section>
+            <img src="./img/wordmark_1.svg"
+                 alt="airfow logo"
+                 style="height:180px"/>
+            <h3>Python based workflow scheduler</h3>
+        </section>
+
+
+        <section>
+        <section>
+          <h3>Difference to a VM</h3>
+          <img src="./img/docker-containerized-and-vm-transparent-bg.png">
+          <p>Containers all run on top of the same host OS and take up substantially less resources!</p>
+        </section>
+
+          <section>
+            <h3>Basic operations</h3>
+            <ol>
+              <li>
+                <p>Download an image</p>
+                <pre><code class="bash" data-trim data-noescape>
+                > docker pull debian
+                 </code></pre>
+              </li>
+              <li>
+                <p>Run a container</p>
+                <pre><code class="bash" data-trim data-noescape>
+                > docker run -it debian
+                 </code></pre>
+              </li>
+              <li>
+                <p>List running containers</p>
+                <pre><code class="bash" data-trim data-noescape>
+                > docker ps
+                 </code></pre>
+              </li>
+              <li>
+                <p>Remove containers</p>
+                <pre><code class="bash" data-trim data-noescape>
+                > docker rm 'id'
+                 </code></pre>
+              </li>
+            </ol>
+            <aside class="notes">
+              CODE!
+            </aside>
+          </section>
+          <section>
+            <h3>Basic operations</h3>
+            <ol>
+              <li>
+                <p>Environment variables / volumes and published ports</p>
+                <pre><code class="bash" data-trim data-noescape>
+                docker run -E ENV_NAME -V HOST:GUEST -p HOST:GUEST...
+                 </code></pre>
+              </li>
+              <li>
+                <p>Running named container in daemon mode</p>
+                <pre><code class="bash" data-trim data-noescape>
+                docker run --name NAME -d
+                 </code></pre>
+              </li>
+              <li>
+                <p>Attach to running containers</p>
+                <pre><code class="bash" data-trim data-noescape>
+                docker exec CONTAINER_ID COMMAND
+                 </code></pre>
+              </li>
+            </ol>
+            <aside class="notes">
+              CODE!
+            </aside>
+          </section>
+
+
+          </section>
+
+          <section>
+              <section>
+                  <h3>Kubernetes</h3>
+                  <img src="./img/k8s/ever-given.jpg"
+                       style="height:500px"
+                       alt="K8S for beginners"
+                       />
+
+              </section>
+          </section>
+
+
+<section data-markdown>
+  <script type="text/template">
+     ## Dataflow programming
+
+      - programming paradigm that models a program as a directed graph of the
+      data flowing between operations.
+      - share some features of functional languages, more suitable
+      for numeric processing.
+      - architecture, based on an indeterministic machine paradigm.
+      - pioneered by Jack Dennis at MIT in the 1960s.
+  </script>
+</section>
+
+<section data-markdown>
+
+<script type="text/template">
+<!-- .slide: class="benchmark" -->
+
+# Comparison to other solutions
+
+| Name        | Origin          | DAGS         | Source       | Scheduler    | Backfill      | UI     | platform   | Scalable                 | License |
+| :---------- | --------------- | ------------ | ------------ | :----------: | :-----------: | :----: | :--------: | :----------------------: | -       |
+| [Airflow]   | Airbnb          | Python       | Python       | ✓            | ✓             | ✓      | -          | ✓                        | Apache  |
+| [Argo]      | Applatix        | YAML         | Go           | 3rd party    |               | ✓      | K8S        | ✓                        | Apache  |
+| [Azkaban]   | LinkedIn        | YAML         | Java         | ✓            |               | ✓      | -          |                          | Apache  |
+| [Conductor] | Netflix         | JSON         | Java         |              |               | ✓      | -          | ✓                        | Apache  |
+| [Dolphin]   |                 | UI           | Java         | ✓            | ✓             | ✓      | -          | ✓                        | Apache  |
+| [Luigi]     | Spotify         | Python       | Python       |              | ✓             | ✓      | -          | ✓                        | Apache  |
+| [Make]      | -               | Custom       | C            |              |               |        | -          |                          | GPLv3   |
+| [Metaflow]  | Netflix         | Python       | Python       |              |               |        | -          | ✓                        | Apache  |
+| [Nifi]      | NSA             | UI           | Java         | ✓            |               | ✓      | -          | ✓                        | Apache  |
+| [Oozie]     | -               | XML          | Java         | ✓            | ✓             | ✓      | Hadoop     | ✓                        | Apache  |
+
+
+[Airflow]: https://airflow.apache.org "Airflow"
+[Argo]: https://argoproj.github.io "Argo CD"
+[Azkaban]: https://azkaban.github.io "Azkaban"
+[Conductor]: https://netflix.github.io/conductor "Conductor"
+[Dolphin]: https://dolphinscheduler.apache.org "DolphinScheduler"
+[Luigi]: https://luigi.readthedocs.io "Luigi"
+[Make]: https://www.gnu.org/software/make/ "GNU Make"
+[Metaflow]: https://metaflow.org/ "Metaflow"
+[Nifi]: https://nifi.apache.org/ "Apache Nifi"
+[Oozie]: https://oozie.apache.org/ "Apache Oozie"
+
+</script>
+</section>
+
+<section id="CRISP-DM">
+    <section data-transition="fade-in fade-out">
+        <h3>CRISP-DM revamped</h3>
+        <img
+        src="./img/WF101/01.png"
+         style="height:400px;"/>
+        <p>Here is a data scientist.</p>
+    </section>
+
+    <section data-transition="fade-in fade-out">
+        <h3>CRISP-DM revamped</h3>
+        <img
+            src="./img/WF101/02.png"
+            style="height:400px;"/>
+            <p>Data scientists solve important business problems.</p>
+    </section>
+
+    <section data-transition="fade-in fade-out">
+        <h3>CRISP-DM revamped</h3>
+        <img
+            src="./img/WF101/03.png"
+            style="height:400px;"/>
+            <p>A good way to start solving a problem is to prototype a solution in a
+            notebook.</p>
+    </section>
+
+    <section data-transition="fade-in fade-out">
+        <h3>CRISP-DM revamped</h3>
+        <img
+            src="./img/WF101/04.png"
+            style="height:400px;"/>
+        <p>There are great libraries available for machine learning that make
+        prototyping fun.</p>
+    </section>
+
+    <section data-transition="fade-in fade-out">
+        <h3>CRISP-DM revamped</h3>
+        <img
+            src="./img/WF101/05.png"
+            style="height:400px;"/>
+            <p>After the first experiments, it is a good idea to start keeping
+            track of models and data.</p>
+    </section>
+
+    <section data-transition="fade-in fade-out">
+        <h3>CRISP-DM revamped</h3>
+        <img
+            src="./img/WF101/06.png"
+            style="height:400px;"/>
+            <p>It can take a lot of work to get the latest data and keep the
+            models up to date reliably.</p>
+    </section>
+
+    <section data-transition="fade-in fade-out">
+        <h3>CRISP-DM revamped</h3>
+        <img
+            src="./img/WF101/07.png"
+            style="height:400px;"/>
+            <p>Production workflows should run on servers, not on a laptop.</p>
+    </section>
+
+    <section data-transition="fade-in fade-out">
+        <h3>CRISP-DM revamped</h3>
+        <img
+            src="./img/WF101/08.png"
+            style="height:400px;"/>
+            <p>These days, servers execute containers. Workflows need to be
+            packaged for execution.</p>
+    </section>
+
+    <section data-transition="fade-in fade-out">
+        <h3>CRISP-DM revamped</h3>
+        <img
+            src="./img/WF101/09.png"
+            style="height:400px;"/>
+            <p>Where should the results go? Sometimes they are deployed as
+            containers too.</p>
+    </section>
+
+    <section data-transition="fade-in fade-out">
+        <h3>CRISP-DM revamped</h3>
+        <img
+            src="./img/WF101/10.png"
+            style="height:400px;"/>
+            <p>Containerized models can be consumed by business applications.</p>
+    </section>
+
+    <section data-transition="fade-in fade-out">
+        <h3>CRISP-DM revamped</h3>
+        <img
+            src="./img/WF101/11.png"
+            style="height:400px;"/>
+            <p>Stakeholders evaluate the results. They want more models and
+            better models!</p>
+    </section>
+
+</section>
+
+
+<section>
+    <img
+        src="https://luigi.readthedocs.io/en/stable/_images/task_breakdown.png"/>
+</section>
+
+
+<section>
+    <h2>Bla</h2>
+    <!-- <div style="background-color: blue;"> -->
+  <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2431_RC04/embed_loader.js"></script>
+  <script type="text/javascript">
+    trends.embed.renderExploreWidget("TIMESERIES",
+        {"comparisonItem": [
+            {"keyword":"/m/0fdjtq","geo":"","time":"2004-01-01 2021-04-03"},
+            {"keyword":"/g/11b7lxp79d","geo":"","time":"2004-01-01 2021-04-03"}
+            ],"category":0,"property":""},
+        { "guestPath":"https://trends.google.com:443/trends/embed/"});
+  </script>
+  <!-- </div> -->
+</section>
+
+
+<section data-state="header1">
+    <!-- <style> -->
+    <!-- .header1 header:after { -->
+    <!--     content: "Apache Airflow"; background:white; -->
+    <!-- } -->
+    <!-- </style> -->
+    <h2>Architecture: LocalExecutor</h2>
+
+    <object type="image/svg+xml" data="./img/arch-diag-basic.svg" style="height:500px"/>
+
+</section>
+
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/menu/menu.js"></script>
+    <script>
+
+      Reveal.initialize({
+        margin: 0.04,
+        hash: true,
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes,
+            RevealMenu ],
+        menu: {
+            keyboard: true,
+            loadIcons: true            }
+        });
+
+        Reveal.configure({
+            keyboard: {
+                72: 'left',
+                74: 'down',
+                75: 'up',
+                76: 'right'
+            }
+        });
+
+    </script>
+  </body>
+</html>

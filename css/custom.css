@@ -1,0 +1,16 @@
+.benchmark {
+  /* background-color: green; */
+  font-size: 24px;
+}
+
+#trends-widget-1 {
+    height: 450px;
+}
+
+section.top h1{
+    margin-top: -270px;
+}
+
+#CRISP-DM p {
+  font-size: 20px;
+}
