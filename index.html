@@ -21,6 +21,8 @@
   </head>
 
   <body>
+
+    <!-- Presentation {{{1 -->
     <div class="reveal">
       <header style="position: absolute;top: 50px; left: 100px; z-index:500;
         font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
@@ -33,7 +35,11 @@
             <h3>Python based workflow scheduler</h3>
         </section>
 
-
+        <!-- Docker {{{2 -->
+        <section data-background="#268bd2">
+            <h1>Docker</h1>
+            <img src="./img/docker/moby.png" alt="Mody"/>
+        </section>
         <section>
         <section>
           <h3>Difference to a VM</h3>
@@ -100,9 +106,12 @@
             </aside>
           </section>
 
-
           </section>
-
+          <!-- 2}}} -->
+          <!-- Kubernetes {{{2 -->
+        <section data-background="#268bd2">
+            <h1>Kubernetes</h1>
+        </section>
           <section>
               <section>
                   <h3>Kubernetes</h3>
@@ -110,62 +119,19 @@
                        style="height:500px"
                        alt="K8S for beginners"
                        />
-
               </section>
           </section>
+          <!-- 2}}} -->
 
 
-<section data-markdown>
-  <script type="text/template">
-     ## Dataflow programming
-
-      - programming paradigm that models a program as a directed graph of the
-      data flowing between operations.
-      - share some features of functional languages, more suitable
-      for numeric processing.
-      - architecture, based on an indeterministic machine paradigm.
-      - pioneered by Jack Dennis at MIT in the 1960s.
-  </script>
+<section data-background="#268bd2">
+    <h1>Data pipelines</h1>
 </section>
 
-<section data-markdown>
-
-<script type="text/template">
-<!-- .slide: class="benchmark" -->
-
-# Comparison to other solutions
-
-| Name        | Origin          | DAGS         | Source       | Scheduler    | Backfill      | UI     | platform   | Scalable                 | License |
-| :---------- | --------------- | ------------ | ------------ | :----------: | :-----------: | :----: | :--------: | :----------------------: | -       |
-| [Airflow]   | Airbnb          | Python       | Python       | ✓            | ✓             | ✓      | -          | ✓                        | Apache  |
-| [Argo]      | Applatix        | YAML         | Go           | 3rd party    |               | ✓      | K8S        | ✓                        | Apache  |
-| [Azkaban]   | LinkedIn        | YAML         | Java         | ✓            |               | ✓      | -          |                          | Apache  |
-| [Conductor] | Netflix         | JSON         | Java         |              |               | ✓      | -          | ✓                        | Apache  |
-| [Dolphin]   |                 | UI           | Java         | ✓            | ✓             | ✓      | -          | ✓                        | Apache  |
-| [Luigi]     | Spotify         | Python       | Python       |              | ✓             | ✓      | -          | ✓                        | Apache  |
-| [Make]      | -               | Custom       | C            |              |               |        | -          |                          | GPLv3   |
-| [Metaflow]  | Netflix         | Python       | Python       |              |               |        | -          | ✓                        | Apache  |
-| [Nifi]      | NSA             | UI           | Java         | ✓            |               | ✓      | -          | ✓                        | Apache  |
-| [Oozie]     | -               | XML          | Java         | ✓            | ✓             | ✓      | Hadoop     | ✓                        | Apache  |
-
-
-[Airflow]: https://airflow.apache.org "Airflow"
-[Argo]: https://argoproj.github.io "Argo CD"
-[Azkaban]: https://azkaban.github.io "Azkaban"
-[Conductor]: https://netflix.github.io/conductor "Conductor"
-[Dolphin]: https://dolphinscheduler.apache.org "DolphinScheduler"
-[Luigi]: https://luigi.readthedocs.io "Luigi"
-[Make]: https://www.gnu.org/software/make/ "GNU Make"
-[Metaflow]: https://metaflow.org/ "Metaflow"
-[Nifi]: https://nifi.apache.org/ "Apache Nifi"
-[Oozie]: https://oozie.apache.org/ "Apache Oozie"
-
-</script>
-</section>
-
+<!-- CRISP-DM revamped {{{3 -->
 <section id="CRISP-DM">
     <section data-transition="fade-in fade-out">
-        <h3>CRISP-DM revamped</h3>
+        <h3 class="menu-title"> CRISP-DM revamped</h3>
         <img
         src="./img/WF101/01.png"
          style="height:400px;"/>
@@ -260,45 +226,129 @@
     </section>
 
 </section>
+<!-- 3}}} -->
+<!-- Dataflow programming {{{3 -->
+<section data-markdown>
+  <script type="text/template">
+     ### Dataflow programming
 
-
-<section>
-    <img
-        src="https://luigi.readthedocs.io/en/stable/_images/task_breakdown.png"/>
-</section>
-
-
-<section>
-    <h2>Bla</h2>
-    <!-- <div style="background-color: blue;"> -->
-  <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2431_RC04/embed_loader.js"></script>
-  <script type="text/javascript">
-    trends.embed.renderExploreWidget("TIMESERIES",
-        {"comparisonItem": [
-            {"keyword":"/m/0fdjtq","geo":"","time":"2004-01-01 2021-04-03"},
-            {"keyword":"/g/11b7lxp79d","geo":"","time":"2004-01-01 2021-04-03"}
-            ],"category":0,"property":""},
-        { "guestPath":"https://trends.google.com:443/trends/embed/"});
+      - programming paradigm that models a program as a directed graph of the
+      data flowing between operations.
+      - share some features of functional languages, more suitable
+      for numeric processing.
+      - architecture, based on an indeterministic machine paradigm.
+      - pioneered by Jack Dennis at MIT in the 1960s.
   </script>
-  <!-- </div> -->
+</section>
+<!-- 3}}} -->
+<!-- Data pipelines {{{2 -->
+<!-- 2}}} -->
+
+<!-- Apache Airflow {{{2 -->
+
+<section data-background="#268bd2">
+    <h1>Apache Airflow</h1>
 </section>
 
-
-<section data-state="header1">
+<!-- Architecture {{{3 -->
+<section>
+<!-- <section data-state="header1"> -->
     <!-- <style> -->
     <!-- .header1 header:after { -->
     <!--     content: "Apache Airflow"; background:white; -->
     <!-- } -->
     <!-- </style> -->
-    <h2>Architecture: LocalExecutor</h2>
+    <h3>Architecture: LocalExecutor</h3>
 
-    <object type="image/svg+xml" data="./img/arch-diag-basic.svg" style="height:500px"/>
+    <object type="image/svg+xml" data="./img/arch-diag-basic.svg"
+        style="height:500px"></object>
+</section>
+<!-- 3}}} -->
+<!-- Comparison to others {{{3 -->
+<section data-markdown>
+
+<script type="text/template">
+<!-- .slide: class="benchmark" -->
+
+# Comparison to other solutions
+
+| Name        | Origin          | DAGS         | Source       | Scheduler    | Backfill      | UI     | platform   | Scalable                 | License |
+| :---------- | --------------- | ------------ | ------------ | :----------: | :-----------: | :----: | :--------: | :----------------------: | -       |
+| [Airflow]   | Airbnb          | Python       | Python       | ✓            | ✓             | ✓      | -          | ✓                        | Apache  |
+| [Argo]      | Applatix        | YAML         | Go           | 3rd party    |               | ✓      | K8S        | ✓                        | Apache  |
+| [Azkaban]   | LinkedIn        | YAML         | Java         | ✓            |               | ✓      | -          |                          | Apache  |
+| [Conductor] | Netflix         | JSON         | Java         |              |               | ✓      | -          | ✓                        | Apache  |
+| [Dolphin]   |                 | UI           | Java         | ✓            | ✓             | ✓      | -          | ✓                        | Apache  |
+| [Luigi]     | Spotify         | Python       | Python       |              | ✓             | ✓      | -          | ✓                        | Apache  |
+| [Make]      | -               | Custom       | C            |              |               |        | -          |                          | GPLv3   |
+| [Metaflow]  | Netflix         | Python       | Python       |              |               |        | -          | ✓                        | Apache  |
+| [Nifi]      | NSA             | UI           | Java         | ✓            |               | ✓      | -          | ✓                        | Apache  |
+| [Oozie]     | -               | XML          | Java         | ✓            | ✓             | ✓      | Hadoop     | ✓                        | Apache  |
+
+
+[Airflow]: https://airflow.apache.org "Airflow"
+[Argo]: https://argoproj.github.io "Argo CD"
+[Azkaban]: https://azkaban.github.io "Azkaban"
+[Conductor]: https://netflix.github.io/conductor "Conductor"
+[Dolphin]: https://dolphinscheduler.apache.org "DolphinScheduler"
+[Luigi]: https://luigi.readthedocs.io "Luigi"
+[Make]: https://www.gnu.org/software/make/ "GNU Make"
+[Metaflow]: https://metaflow.org/ "Metaflow"
+[Nifi]: https://nifi.apache.org/ "Apache Nifi"
+[Oozie]: https://oozie.apache.org/ "Apache Oozie"
+
+</script>
 
 </section>
+<!-- 3}}} -->
+
+<!-- 2}}} -->
+
+<!-- <section> -->
+<!--     <h2>Bla</h2> -->
+<!--     <!-1- <div style="background-color: blue;"> -1-> -->
+<!--   <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2431_RC04/embed_loader.js"></script> -->
+<!--   <script type="text/javascript"> -->
+<!--     trends.embed.renderExploreWidget("TIMESERIES", -->
+<!--         {"comparisonItem": [ -->
+<!--             {"keyword":"/m/0fdjtq","geo":"","time":"2004-01-01 2021-04-03"}, -->
+<!--             {"keyword":"/g/11b7lxp79d","geo":"","time":"2004-01-01 2021-04-03"} -->
+<!--             ],"category":0,"property":""}, -->
+<!--         { "guestPath":"https://trends.google.com:443/trends/embed/"}); -->
+<!--   </script> -->
+<!--   <!-1- </div> -1-> -->
+<!-- </section> -->
+
+
+<!-- Concepts {{{2 -->
+<section>
+  <section>
+    <h3>DAG - Directed Acyclic Graph</h3>
+    <ul>
+      <li>Collection of all the tasks you want to run, organized in a way that
+        reflects their relationships and dependencies.</li>
+      <li> A DAG is defined in a Python script, which represents the DAGs
+        structure (tasks and their dependencies) as code. </li>
+    </ul>
+  </section>
+  <section >
+    <h3>Fit Text</h3>
+    <p>Resizes text to be as large as possible within its container.</p>
+        <pre><code class="python" data-trim data-line-numbers>
+        with DAG('my_dag', start_date=datetime(2016, 1, 1)) as dag:
+            task_1 = DummyOperator('task_1')
+            task_2 = DummyOperator('task_2')
+            task_1 >> task_2 # Define dependencies
+        </code></pre>
+    </section>
+</section>
+
+<!-- 2}}} -->
 
       </div>
     </div>
-
+    <!-- 1}}} -->
+    <!-- Configuration {{{1 -->
     <script src="dist/reveal.js"></script>
     <script src="plugin/notes/notes.js"></script>
     <script src="plugin/markdown/markdown.js"></script>
@@ -311,9 +361,18 @@
         hash: true,
         plugins: [ RevealMarkdown, RevealHighlight, RevealNotes,
             RevealMenu ],
+        transition: 'none', // none/fade/slide/convex/concave/zoom
         menu: {
+            side: 'left',
+            width: 'third',
+            numbers: false,
             keyboard: true,
-            loadIcons: true            }
+            loadIcons: true,
+            markers: true,
+            hideMissingTitles: true,
+            useTextContentForMissingTitles: false,
+            titleSelector: 'h1, h2'
+        }
         });
 
         Reveal.configure({
@@ -326,5 +385,9 @@
         });
 
     </script>
+    <!-- 1}}} -->
   </body>
 </html>
+
+<!-- vim:fdm=marker tabstop=2:
+-->
