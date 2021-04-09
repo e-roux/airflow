@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- Head {{{1 -->
   <head>
     <meta charset="utf-8">
 
@@ -19,9 +20,9 @@
     <!-- Theme used for syntax highlighted code -->
     <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
   </head>
+  <!-- 1}}} -->
 
-  <body>
-
+<body>
     <!-- Presentation {{{1 -->
     <div class="reveal">
       <header style="position: absolute;top: 50px; left: 100px; z-index:500;
@@ -32,20 +33,125 @@
             <img src="./img/wordmark_1.svg"
                  alt="airfow logo"
                  style="height:180px"/>
-            <h3>Python based workflow scheduler</h3>
+            <h1>Python based workflow scheduler</h1>
         </section>
 
         <!-- Docker {{{2 -->
-        <section data-background="#268bd2">
-            <h1>Docker</h1>
+        <section data-menu-title="Docker" data-background="#268bd2">
+            <!-- <h1>Docker</h1> -->
             <img src="./img/docker/moby.png" alt="Mody"/>
         </section>
+
         <section>
-        <section>
+
+        <section data-background="#839496">
+            <h2 class='r-strech'>Virtualization</h2>
+        </section>
+
+          <section>
+            <h3>Virtualization</h3>
+            <ul>
+              <li>abstraction layer over computer hardware</li>
+              <li>hardware elements of a single computer are divided into
+                multiple virtual computers (VM, Virtual Machine)</li>
+              <li>Each VM runs its own operating system (OS) and behaves like an
+                independent computer</li>
+              </ul>
+          </section>
+
+          <section>
+            <h3>Virtualization</h3>
+            <p>Benefits</p>
+            <ul>
+              <li>Optimize IT hardware usage</li>
+              <li>lower power consumption</li>
+              <li>centralized management IT operation</li>
+              <li>more reliability and security </li>
+            </ul>
+          </section>
+
+        <section data-background="#839496">
+            <h2 class='r-fit-text'>Containerization</h2>
+        </section>
+
+          <section>
           <h3>Difference to a VM</h3>
           <img src="./img/docker-containerized-and-vm-transparent-bg.png">
           <p>Containers all run on top of the same host OS and take up substantially less resources!</p>
         </section>
+
+        <section data-markdown>
+          ### Linux processes
+
+          - In Unix-like operating systems, new processes are created by the
+          `fork()` system call.
+          - Process ID 1 is usually the init process primarily responsible for
+          starting and shutting down the system.
+
+          </section>
+
+        <section>
+          <h3> Linux namespaces</h3>
+
+          <p>PID namespaces creation, bash process running</p>
+          <pre><code class="bash" data-trim data-noescape>
+          ❯ sudo unshare --fork --pid --mount-proc bash
+          </code></pre>
+          <pre><code class="bash" data-trim >
+❯ ps -eo pid,user,tty,cmd
+PID USER     TT       CMD
+  1 root     pts/24   bash
+ 22 root     pts/24   ps -eo pid,user,tty,cmd
+          </code></pre>
+          <p>In the regular PID namespaces</p>
+          <pre><code class="bash" data-trim >
+❯ ps -eo pid,user,tty,cmd
+PID     USER     TT       CMD
+...
+3637495 root     pts/24   sudo unshare --fork --pid --mount-proc bash
+3637498 root     pts/24   unshare --fork --pid --mount-proc bash
+3637500 root     pts/24   bash
+...
+          </code></pre>
+          </section>
+
+        <section data-markdown>
+            <script type="text/template">
+          ### Linux namespaces
+
+          Since Linux 5.6, 8 kind of namespaces:
+
+          - Mount (mnt)
+          - Process ID (pid) <!-- .element: class="fragment highlight-blue" data-fragment-index="0" -->
+          - Network (net)
+          - Interprocess Communication (ipc)
+          - UTS
+          - User ID (user)
+          - Control group (cgroup) Namespace <!-- .element: class="fragment highlight-blue" data-fragment-index="0" -->
+          - Time Namespace
+              </script>
+          </section>
+
+          <section>
+            <img
+              src="https://wizardzines.com/zines/containers/samples/cgroups.jpg"
+              alt="cgroups"/>
+          </section>
+
+<section data-markdown>
+
+### Docker
+
+- A container image format
+- Containers are implemented using Linux namespaces and cgroups
+- A method for building container images (`docker build`)
+- A way to manage container images (`docker images`, `docker rm` , etc.)
+- A way to manage instances of containers (docker ps, docker rm , etc.)
+- A way to share container images (docker push/pull)
+- A way to run containers (docker run)
+
+
+</section>
 
           <section>
             <h3>Basic operations</h3>
@@ -79,6 +185,7 @@
               CODE!
             </aside>
           </section>
+
           <section>
             <h3>Basic operations</h3>
             <ol>
@@ -106,6 +213,9 @@
             </aside>
           </section>
 
+          <section>
+            <img src="img/docker/containerd.png" alt="containerd"/>
+          </section>
           </section>
           <!-- 2}}} -->
           <!-- Kubernetes {{{2 -->
@@ -120,7 +230,16 @@
                        alt="K8S for beginners"
                        />
               </section>
+
+          <section>
+              <iframe style="width:80vw;height:80vh;" data-src="https://landscape.cncf.io/?fullscreen=yes&grouping=no&sort=stars" data-preload></iframe>
           </section>
+
+
+          </section>
+
+
+
           <!-- 2}}} -->
 
 
@@ -357,7 +476,6 @@
     <script>
 
       Reveal.initialize({
-        margin: 0.04,
         hash: true,
         plugins: [ RevealMarkdown, RevealHighlight, RevealNotes,
             RevealMenu ],
@@ -386,7 +504,7 @@
 
     </script>
     <!-- 1}}} -->
-  </body>
+</body>
 </html>
 
 <!-- vim:fdm=marker tabstop=2:
