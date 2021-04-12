@@ -29,24 +29,37 @@
         font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
       <div class="slides">
 
-<section>
+<section id="main"
+         data-background-image="./img/bg01.png"
+         data-background-size='300px'
+         data-background-repeat='repeat'
+         data-background-opacity=0.1>
   <img
       src="./img/wordmark_1.svg"
       alt="airfow logo"
       style="height:180px"
       />
-  <h1>Python based workflow scheduler</h1>
+  <h1>Python based workflow scheduler in a cloud context</h1>
 </section>
 
 <!-- Docker {{{2 -->
-<section data-menu-title="Docker" data-background="#268bd2">
-    <img src="./img/docker/moby.png" alt="Mody"/>
+<section data-background="#cb4b16"
+         data-background-image="./img/bg01.png"
+         data-background-size='300px'
+         data-background-repeat='repeat'
+         data-background-opacity=0.2>
+
+  <h1>Stairway to containers</h1>
 </section>
 
 <section>
 
-  <section data-background="#839496">
-    <h2 class='r-strech'>Virtualization</h2>
+  <section data-background="#839496"
+           data-background-image="./img/bg01.png"
+           data-background-size='300px'
+           data-background-repeat='repeat'
+           data-background-opacity=0.2>
+    <h2 class='main'>Virtualization</h2>
   </section>
 
   <section>
@@ -71,8 +84,13 @@
     </ul>
   </section>
 
-<section data-background="#839496">
-    <h2 class='r-fit-text'>Containerization</h2>
+  <section class="main"
+           data-background="#839496"
+           data-background-image="./img/bg01.png"
+           data-background-size='300px'
+           data-background-repeat='repeat'
+           data-background-opacity=0.2>
+    <h2>Containerization</h2>
 </section>
 
   <section>
@@ -226,32 +244,24 @@ PID     USER     TT       CMD
   </section>
   </section>
   <!-- 2}}} -->
+
 <!-- Kubernetes {{{2 -->
-<section data-background="#268bd2">
-  <h1>Kubernetes</h1>
-</section>
-<section>
-  <section>
-    <h3>Kubernetes</h3>
-    <img src="./img/k8s/ever-given.jpg" style="height:500px"
-        alt="K8S for beginners" />
-    </section>
-  <section>
-    <iframe
-      data-src="https://landscape.cncf.io/?fullscreen=yes"
-      style="width:80vw;height:80vh;"
-      data-preload></iframe>
-  </section>
+<section data-background="#cb3b16"
+         data-background-image="./img/bg01.png"
+         data-background-size='300px'
+         data-background-repeat='repeat'
+         data-background-opacity=0.2>
+  <h1>Orchestration in K8S</h1>
 </section>
 
 <!-- Micro-services {{{3 -->
 
 <section>
-  <h2>Microservices</h2>
+  <h2>Going to the cloud</h2>
   <div class="r-stack">
 
-    <div class="fragment fade-out" data-fragment-index="0">
-      <p> Some text</p>
+    <div class="fragment fade-out r-stretch" data-fragment-index="0">
+      <p>PaaS - Platform as a Service - or match apps requirements to a cloud product catalogue</p>
       <img
           src="https://www.pluralsight.com/content/pluralsight/en/blog/it-ops/doc/docker-containers-take-over-world/jcr:content/main/image/image-res.img.54b213b9-4c54-4af0-b1ba-d9b4c3be0f24.png"
           alt="managed services"
@@ -259,8 +269,9 @@ PID     USER     TT       CMD
         />
     </div>
 
-  <div class="fragment current-visible" data-fragment-index="0">
-    <p>other text</p>
+  <div class="fragment current-visible r-stretch" data-fragment-index="0">
+      <p>IaaS - Infrastructure as a Service - or copy your infrastructure to
+      cloud VMs</p>
     <img
         src="https://www.pluralsight.com/content/pluralsight/en/blog/it-ops/doc/docker-containers-take-over-world/jcr:content/main/image_copy/image-res.img.9384a3b6-2e01-460e-b410-afcce4edeb78.png"
         alt="managed services"
@@ -268,8 +279,9 @@ PID     USER     TT       CMD
         />
     </div>
 
-    <div class="fragment">
-    <p>third text</p>
+    <div class="fragment r-stretch">
+      <p>CaaS - Container as a Service - or break your monoliths in
+      microservices and go DevOps.</p>
     <img
         src="https://www.pluralsight.com/content/pluralsight/en/blog/it-ops/doc/docker-containers-take-over-world/jcr:content/main/image_1088073689/image-res.img.2795f210-48e2-45bf-9bd8-46bdf1f88f15.png"
         alt="managed services"
@@ -284,12 +296,30 @@ PID     USER     TT       CMD
     >Source</a>
 
 </section>
-
 <!-- 3}}} -->
+
+<section>
+  <section>
+    <h3>Kubernetes</h3>
+    <img src="./img/k8s/ever-given.jpg" style="height:500px"
+        alt="K8S for beginners" />
+    </section>
+  <section>
+    <iframe
+      data-src="https://landscape.cncf.io/?fullscreen=yes"
+      style="width:80vw;height:80vh;"
+      data-preload></iframe>
+  </section>
+</section>
 
 <!-- 2}}} -->
 
-<section data-background="#268bd2">
+<!-- Data pipelines {{{2 -->
+<section data-background="#cb3b16"
+         data-background-image="./img/bg01.png"
+         data-background-size='300px'
+         data-background-repeat='repeat'
+         data-background-opacity=0.2>
     <h1>Data pipelines</h1>
 </section>
 
@@ -380,52 +410,13 @@ PID     USER     TT       CMD
 </section>
 <!-- 3}}} -->
 
-</section>
-<!-- 3}}} -->
-<!-- Dataflow programming {{{3 -->
-<section data-markdown>
-  <script type="text/template">
-     ### Dataflow programming
-
-      - programming paradigm that models a program as a directed graph of the
-      data flowing between operations.
-      - share some features of functional languages, more suitable
-      for numeric processing.
-      - architecture, based on an indeterministic machine paradigm.
-      - pioneered by Jack Dennis at MIT in the 1960s.
-  </script>
-</section>
-<!-- 3}}} -->
-<!-- Data pipelines {{{2 -->
-<!-- 2}}} -->
-
-<!-- Apache Airflow {{{2 -->
-
-<section data-background="#dc322f">
-    <h1>Apache Airflow</h1>
-</section>
-
-<!-- Architecture {{{3 -->
-<section>
-<!-- <section data-state="header1"> -->
-    <!-- <style> -->
-    <!-- .header1 header:after { -->
-    <!--     content: "Apache Airflow"; background:white; -->
-    <!-- } -->
-    <!-- </style> -->
-    <h3>Architecture: LocalExecutor</h3>
-
-    <object type="image/svg+xml" data="./img/arch-diag-basic.svg"
-        style="height:500px"></object>
-</section>
-<!-- 3}}} -->
-<!-- Comparison to others {{{3 -->
+<!-- Common OSS {{{3 -->
 <section data-markdown>
 
 <script type="text/template">
 <!-- .slide: class="benchmark" -->
 
-# Comparison to other solutions
+# Common OSS
 
 | Name        | Origin          | DAGS         | Source       | Scheduler    | Backfill      | UI     | platform   | Scalable                 | License |
 | :---------- | --------------- | ------------ | ------------ | :----------: | :-----------: | :----: | :--------: | :----------------------: | -       |
@@ -457,12 +448,112 @@ PID     USER     TT       CMD
 </section>
 <!-- 3}}} -->
 
+<!-- Dataflow programming {{{3 -->
+<section data-markdown>
+  <script type="text/template">
+     ### Dataflow programming
+
+      - programming paradigm that models a program as a directed graph of the
+      data flowing between operations.
+      - share some features of functional languages, more suitable
+      for numeric processing.
+      - architecture, based on an indeterministic machine paradigm.
+      - pioneered by Jack Dennis at MIT in the 1960s.
+  </script>
+</section>
+<section>
+  <h3>Directed Acyclic Graph</h3>
+  <ul>
+    <li>contains directed edges</li>
+    <li>no loops or cycles: no circular dependencies, no deadlock</li>
+    <li>identification of tasks to be run in parallel</li>
+    <li>separation of problems in incremental tasks</li>
+  </ul>
+</section>
+<!-- </section> -->
+<!-- 3}}} -->
+<!-- 2}}} -->
+
+<!-- Apache Airflow {{{2 -->
+<section data-background="#cb3b16"
+         data-background-image="./img/bg01.png"
+         data-background-size='300px'
+         data-background-repeat='repeat'
+         data-background-opacity=0.2>
+
+    <h1>Apache Airflow</h1>
+</section>
+
+<!-- Architecture {{{3 -->
+<section>
+  <section data-background="#268bd2"
+          data-background-image="./img/bg01.png"
+          data-background-size='300px'
+          data-background-repeat='repeat'
+          data-background-opacity=0.2>
+    <h2>Architecture</h2>
+  </section>
+<section>
+<!-- <section data-state="header1"> -->
+    <!-- <style> -->
+    <!-- .header1 header:after { -->
+    <!--     content: "Apache Airflow"; background:white; -->
+    <!-- } -->
+    <!-- </style> -->
+    <h3>Architecture: LocalExecutor</h3>
+
+    <object type="image/svg+xml" data="./img/arch-diag-basic.svg"
+        style="height:500px"></object>
+</section>
+</section>
+<!-- 3}}} -->
+
+<!-- Installation {{{2 -->
+<section>
+  <section data-background="#268bd2"
+            data-background-image="./img/bg01.png"
+            data-background-size='300px'
+            data-background-repeat='repeat'
+            data-background-opacity=0.2>
+
+    <h2>Installation</h2>
+  </section>
+  <section>
+    <h3>Installation</h3>
+      <ul>
+        <li>in a virtual environment with pip
+<pre><code class="terminal">❯ virtualenv myenv
+❯ source myenv/bin/activate
+❯ pip install apache-airflow
+# Or simply with pipx
+❯ pipx install apache-airflow
+</code></pre>
+        </li>
+        <li>Runing inside docker, from within this repository
+<pre><code class="terminal">❯ make up
+</code></pre>
+        </li>
+        <li>On kubernetes with a helm chart after cloning <a
+           href="https://github.com/apache/airflow.git">Airflow
+           git repository</a>
+<pre><code class="terminal">❯ helm install  airflow -n airflow chart
+</code></pre>
+        </li>
+      </ul>
+  </section>
+</section>
+<!-- 2}}} -->
+
 <!-- Concepts {{{2 -->
 <section>
-  <section data-background="#268bd2">
+  <section data-background="#268bd2"
+          data-background-image="./img/bg01.png"
+          data-background-size='300px'
+          data-background-repeat='repeat'
+          data-background-opacity=0.2>
     <h2>Concepts</h2>
   </section>
-  <!-- DAG {{{3 -->
+  <!-- DAGs {{{3 -->
   <section>
     <h3>DAG - Directed Acyclic Graph</h3>
     <div class="r-stack">
@@ -479,6 +570,7 @@ PID     USER     TT       CMD
       </blockquote>
     </div>
   </section>
+
   <section >
     <h3>DAG - Directed Acyclic Graph</h3>
     <div class="r-stack">
@@ -519,7 +611,7 @@ PID     USER     TT       CMD
       <div class="fragment">
         <p>New API in Airflow 2: <i>TaskFlow API</i></p>
 
-          <pre><code class="python" data-trim data-line-numbers="6">
+          <pre><code class="python" data-trim data-line-numbers>
           from datetime import datetime
 
           from airflow.decorators import dag
@@ -536,8 +628,24 @@ PID     USER     TT       CMD
           </code></pre>
       </div>
     </div>
-
   </section>
+  <section >
+    <h3>DAG - scope</h3>
+      <p>DAG object are imported if in <code>globals()</code>.<a
+                                                                href="http://localhost:8080/tree?dag_id=02_1_DAG_scope">
+        🔗
+      </a></p>
+      <pre><code class="python" data-trim data-line-numbers>
+      dag_1 = DAG('this_dag_will_be_discovered')
+
+      def my_function():
+          dag_2 = DAG('but_this_dag_will_not')
+
+      # dag2 in a local scope and not in the DAG list
+      my_function()
+      </code></pre>
+  </section>
+
     <!-- 3}}} -->
 
   <!-- Operators {{{3 -->
@@ -716,14 +824,22 @@ PID     USER     TT       CMD
 <!-- 2}}} -->
 
 <!-- KubernetesExecutor {{{3 -->
-<section data-background="#268bd2">
+  <section data-background="#268bd2"
+            data-background-image="./img/bg01.png"
+            data-background-size='300px'
+            data-background-repeat='repeat'
+            data-background-opacity=0.2>
   <h2><code>KubernetesExecutor</code></h2>
 </section>
 
 <!-- 3}}} -->
 
 <!-- Testing {{{ 3 -->
-<section data-background="#268bd2">
+  <section data-background="#268bd2"
+            data-background-image="./img/bg01.png"
+            data-background-size='300px'
+            data-background-repeat='repeat'
+            data-background-opacity=0.2>
   <h2>Testing</h2>
   <!-- https://medium.com/wbaa/datas-inferno-7-circles-of-data-testing-hell-with-airflow-cef4adff58d8 -->
 </section>
@@ -738,6 +854,7 @@ PID     USER     TT       CMD
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>
     <script src="plugin/menu/menu.js"></script>
+    <!-- <script src="js/custom.js"></script> -->
     <script>
 
       Reveal.initialize({

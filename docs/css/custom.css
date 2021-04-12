@@ -1,5 +1,5 @@
 .reveal blockquote {
-box-shadow: none;
+  box-shadow: none;
 }
 .font-size-mid table {
   font-size: 24px;
@@ -11,11 +11,11 @@ box-shadow: none;
 }
 
 #trends-widget-1 {
-    height: 450px;
+  height: 450px;
 }
 
 section.top h1{
-    margin-top: -270px;
+  margin-top: -270px;
 }
 
 #CRISP-DM p {
@@ -28,3 +28,12 @@ section.top h1{
 #CRISP p {
   font-size: 20px;
 }
+
+#main h1 {
+  font-size: 32px;
+  color: #B2B2B2;
+}
+
+.main h2 {
+  font-size: 69px;
+  }
