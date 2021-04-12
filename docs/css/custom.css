@@ -1,3 +1,10 @@
+.reveal blockquote {
+box-shadow: none;
+}
+.font-size-mid table {
+  font-size: 24px;
+}
+
 .benchmark {
   /* background-color: green; */
   font-size: 24px;
@@ -12,5 +19,12 @@ section.top h1{
 }
 
 #CRISP-DM p {
+  font-size: 20px;
+}
+
+#CRISP img {
+  height: 400px;
+}
+#CRISP p {
   font-size: 20px;
 }

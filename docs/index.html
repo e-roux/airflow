@@ -29,82 +29,83 @@
         font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
       <div class="slides">
 
-        <section>
-            <img src="./img/wordmark_1.svg"
-                 alt="airfow logo"
-                 style="height:180px"/>
-            <h1>Python based workflow scheduler</h1>
-        </section>
+<section>
+  <img
+      src="./img/wordmark_1.svg"
+      alt="airfow logo"
+      style="height:180px"
+      />
+  <h1>Python based workflow scheduler</h1>
+</section>
 
-        <!-- Docker {{{2 -->
-        <section data-menu-title="Docker" data-background="#268bd2">
-            <!-- <h1>Docker</h1> -->
-            <img src="./img/docker/moby.png" alt="Mody"/>
-        </section>
+<!-- Docker {{{2 -->
+<section data-menu-title="Docker" data-background="#268bd2">
+    <img src="./img/docker/moby.png" alt="Mody"/>
+</section>
 
-        <section>
+<section>
 
-        <section data-background="#839496">
-            <h2 class='r-strech'>Virtualization</h2>
-        </section>
+  <section data-background="#839496">
+    <h2 class='r-strech'>Virtualization</h2>
+  </section>
 
-          <section>
-            <h3>Virtualization</h3>
-            <ul>
-              <li>abstraction layer over computer hardware</li>
-              <li>hardware elements of a single computer are divided into
-                multiple virtual computers (VM, Virtual Machine)</li>
-              <li>Each VM runs its own operating system (OS) and behaves like an
-                independent computer</li>
-              </ul>
-          </section>
+  <section>
+    <h3>Virtualization</h3>
+    <ul>
+      <li>abstraction layer over computer hardware</li>
+      <li>hardware elements of a single computer are divided into
+        multiple virtual computers (VM, Virtual Machine)</li>
+      <li>Each VM runs its own operating system (OS) and behaves like an
+        independent computer</li>
+      </ul>
+  </section>
 
-          <section>
-            <h3>Virtualization</h3>
-            <p>Benefits</p>
-            <ul>
-              <li>Optimize IT hardware usage</li>
-              <li>lower power consumption</li>
-              <li>centralized management IT operation</li>
-              <li>more reliability and security </li>
-            </ul>
-          </section>
+  <section>
+    <h3>Virtualization</h3>
+    <p>Benefits</p>
+    <ul>
+      <li>Optimize IT hardware usage</li>
+      <li>lower power consumption</li>
+      <li>centralized management IT operation</li>
+      <li>more reliability and security </li>
+    </ul>
+  </section>
 
-        <section data-background="#839496">
-            <h2 class='r-fit-text'>Containerization</h2>
-        </section>
+<section data-background="#839496">
+    <h2 class='r-fit-text'>Containerization</h2>
+</section>
 
-          <section>
-          <h3>Difference to a VM</h3>
-          <img src="./img/docker-containerized-and-vm-transparent-bg.png">
-          <p>Containers all run on top of the same host OS and take up substantially less resources!</p>
-        </section>
+  <section>
+  <h3>Difference to a VM</h3>
+  <img src="./img/docker-containerized-and-vm-transparent-bg.png">
+  <p>Containers all run on top of the same host OS and take up substantially less resources!</p>
+</section>
 
-        <section data-markdown>
-          ### Linux processes
+<section data-markdown>
+  ### Linux processes
 
-          - In Unix-like operating systems, new processes are created by the
-          `fork()` system call.
-          - Process ID 1 is usually the init process primarily responsible for
-          starting and shutting down the system.
+  - In Unix-like operating systems, new processes are created by the
+  `fork()` system call.
+  - Process ID 1 is usually the init process primarily responsible for
+  starting and shutting down the system.
 
-          </section>
+  </section>
 
-        <section>
-          <h3> Linux namespaces</h3>
+<section>
+  <h3> Linux namespaces</h3>
 
-          <p>PID namespaces creation, bash process running</p>
-          <pre><code class="bash" data-trim data-noescape>
-          ❯ sudo unshare --fork --pid --mount-proc bash
-          </code></pre>
-          <pre><code class="bash" data-trim >
+  <p>PID namespaces creation, bash process running</p>
+  <pre><code class="bash" data-trim data-noescape>
+  ❯ sudo unshare --fork --pid --mount-proc bash
+  </code></pre>
+  <pre><code class="bash" data-trim >
 ❯ ps -eo pid,user,tty,cmd
 PID USER     TT       CMD
-  1 root     pts/24   bash
- 22 root     pts/24   ps -eo pid,user,tty,cmd
-          </code></pre>
-          <p>In the regular PID namespaces</p>
-          <pre><code class="bash" data-trim >
+1 root     pts/24   bash
+22 root     pts/24   ps -eo pid,user,tty,cmd
+  </code></pre>
+  <p>In the regular PID namespaces</p>
+  <pre><code class="bash" data-trim >
 ❯ ps -eo pid,user,tty,cmd
 PID     USER     TT       CMD
 ...
@@ -112,112 +113,119 @@ PID     USER     TT       CMD
 3637498 root     pts/24   unshare --fork --pid --mount-proc bash
 3637500 root     pts/24   bash
 ...
-          </code></pre>
-          </section>
+  </code></pre>
+  </section>
 
-        <section data-markdown>
-            <script type="text/template">
-          ### Linux namespaces
+<section data-markdown>
+    <script type="text/template">
+  ### Linux namespaces
 
-          Since Linux 5.6, 8 kind of namespaces:
+  Since Linux 5.6, 8 kind of namespaces:
 
-          - Mount (mnt)
-          - Process ID (pid) <!-- .element: class="fragment highlight-blue" data-fragment-index="0" -->
-          - Network (net)
-          - Interprocess Communication (ipc)
-          - UTS
-          - User ID (user)
-          - Control group (cgroup) Namespace <!-- .element: class="fragment highlight-blue" data-fragment-index="0" -->
-          - Time Namespace
-              </script>
-          </section>
+  - Mount (mnt)
+  - Process ID (pid) <!-- .element: class="fragment highlight-blue" data-fragment-index="0" -->
+  - Network (net)
+  - Interprocess Communication (ipc)
+  - UTS
+  - User ID (user)
+  - Control group (cgroup) Namespace <!-- .element: class="fragment highlight-blue" data-fragment-index="0" -->
+  - Time Namespace
+      </script>
+  </section>
 
-          <section>
-            <img
-              src="https://wizardzines.com/zines/containers/samples/cgroups.jpg"
-              alt="cgroups"/>
-          </section>
+  <section>
+    <img
+      src="https://wizardzines.com/zines/containers/samples/cgroups.jpg"
+      alt="cgroups"/>
+  </section>
+
+  <section data-menu-title="Docker" data-background="#268bd2">
+      <img src="./img/docker/moby.png" alt="Mody"/>
+  </section>
 
 <section data-markdown>
 
 ### Docker
 
 - A container image format
-- Containers are implemented using Linux namespaces and cgroups
-- A method for building container images (`docker build`)
-- A way to manage container images (`docker images`, `docker rm` , etc.)
-- A way to manage instances of containers (docker ps, docker rm , etc.)
-- A way to share container images (docker push/pull)
+- Method to :
+
+    - build container images (`docker build`)
+    - manage container images (`docker images`, `docker rm` , etc.)
+    - manage containers instances (docker ps, docker rm , etc.)
+    - share container images (docker push/pull)
+
 - A way to run containers (docker run)
+- Containers are implemented using Linux namespaces and cgroups
 
 
 </section>
 
-          <section>
-            <h3>Basic operations</h3>
-            <ol>
-              <li>
-                <p>Download an image</p>
-                <pre><code class="bash" data-trim data-noescape>
-                ❯ docker pull debian
-                 </code></pre>
-              </li>
-              <li>
-                <p>Run a container</p>
-                <pre><code class="bash" data-trim data-noescape>
-                ❯ docker run -it debian
-                 </code></pre>
-              </li>
-              <li>
-                <p>List running containers</p>
-                <pre><code class="bash" data-trim data-noescape>
-                ❯ docker ps
-                 </code></pre>
-              </li>
-              <li>
-                <p>Remove containers</p>
-                <pre><code class="bash" data-trim data-noescape>
-                ❯ docker rm 'id'
-                 </code></pre>
-              </li>
-            </ol>
-            <aside class="notes">
-              CODE!
-            </aside>
-          </section>
+  <section>
+    <h3>Basic operations</h3>
+    <ol>
+      <li>
+        <p>Download an image</p>
+        <pre><code class="bash" data-trim data-noescape>
+        ❯ docker pull debian
+          </code></pre>
+      </li>
+      <li>
+        <p>Run a container</p>
+        <pre><code class="bash" data-trim data-noescape>
+        ❯ docker run -it debian
+          </code></pre>
+      </li>
+      <li>
+        <p>List running containers</p>
+        <pre><code class="bash" data-trim data-noescape>
+        ❯ docker ps
+          </code></pre>
+      </li>
+      <li>
+        <p>Remove containers</p>
+        <pre><code class="bash" data-trim data-noescape>
+        ❯ docker rm 'id'
+          </code></pre>
+      </li>
+    </ol>
+    <aside class="notes">
+      CODE!
+    </aside>
+  </section>
 
-          <section>
-            <h3>Basic operations</h3>
-            <ol>
-              <li>
-                <p>Environment variables / volumes and published ports</p>
-                <pre><code class="bash" data-trim data-noescape>
-                docker run -E ENV_NAME -V HOST:GUEST -p HOST:GUEST...
-                 </code></pre>
-              </li>
-              <li>
-                <p>Running named container in daemon mode</p>
-                <pre><code class="bash" data-trim data-noescape>
-                docker run --name NAME -d
-                 </code></pre>
-              </li>
-              <li>
-                <p>Attach to running containers</p>
-                <pre><code class="bash" data-trim data-noescape>
-                docker exec CONTAINER_ID COMMAND
-                 </code></pre>
-              </li>
-            </ol>
-            <aside class="notes">
-              CODE!
-            </aside>
-          </section>
+  <section>
+    <h3>Basic operations</h3>
+    <ol>
+      <li>
+        <p>Environment variables / volumes and published ports</p>
+        <pre><code class="bash" data-trim data-noescape>
+        docker run -E ENV_NAME -V HOST:GUEST -p HOST:GUEST...
+          </code></pre>
+      </li>
+      <li>
+        <p>Running named container in daemon mode</p>
+        <pre><code class="bash" data-trim data-noescape>
+        docker run --name NAME -d
+          </code></pre>
+      </li>
+      <li>
+        <p>Attach to running containers</p>
+        <pre><code class="bash" data-trim data-noescape>
+        docker exec CONTAINER_ID COMMAND
+          </code></pre>
+      </li>
+    </ol>
+    <aside class="notes">
+      CODE!
+    </aside>
+  </section>
 
-          <section>
-            <img src="img/docker/containerd.png" alt="containerd"/>
-          </section>
-          </section>
-          <!-- 2}}} -->
+  <section>
+    <img src="img/docker/containerd.png" alt="containerd"/>
+  </section>
+  </section>
+  <!-- 2}}} -->
 <!-- Kubernetes {{{2 -->
 <section data-background="#268bd2">
   <h1>Kubernetes</h1>
@@ -235,109 +243,142 @@ PID     USER     TT       CMD
       data-preload></iframe>
   </section>
 </section>
-<!-- 2}}} -->
 
+<!-- Micro-services {{{3 -->
+
+<section>
+  <h2>Microservices</h2>
+  <div class="r-stack">
+
+    <div class="fragment fade-out" data-fragment-index="0">
+      <p> Some text</p>
+      <img
+          src="https://www.pluralsight.com/content/pluralsight/en/blog/it-ops/doc/docker-containers-take-over-world/jcr:content/main/image/image-res.img.54b213b9-4c54-4af0-b1ba-d9b4c3be0f24.png"
+          alt="managed services"
+          height="400"
+        />
+    </div>
+
+  <div class="fragment current-visible" data-fragment-index="0">
+    <p>other text</p>
+    <img
+        src="https://www.pluralsight.com/content/pluralsight/en/blog/it-ops/doc/docker-containers-take-over-world/jcr:content/main/image_copy/image-res.img.9384a3b6-2e01-460e-b410-afcce4edeb78.png"
+        alt="managed services"
+        height="400"
+        />
+    </div>
+
+    <div class="fragment">
+    <p>third text</p>
+    <img
+        src="https://www.pluralsight.com/content/pluralsight/en/blog/it-ops/doc/docker-containers-take-over-world/jcr:content/main/image_1088073689/image-res.img.2795f210-48e2-45bf-9bd8-46bdf1f88f15.png"
+        alt="managed services"
+        height="400"
+        />
+    </div>
+
+  </div>
+  <a
+    href="https://www.pluralsight.com/blog/it-ops/docker-containers-take-over-world"
+    alt"Docker containers take over world"
+    >Source</a>
+
+</section>
+
+<!-- 3}}} -->
+
+<!-- 2}}} -->
 
 <section data-background="#268bd2">
     <h1>Data pipelines</h1>
 </section>
 
 <!-- CRISP-DM revamped {{{3 -->
-<section id="CRISP-DM">
-    <section data-transition="fade-in fade-out">
-        <h3 class="menu-title"> CRISP-DM revamped</h3>
-        <img
-        src="./img/WF101/01.png"
-         style="height:400px;"/>
-        <p>Here is a data scientist.</p>
-    </section>
-
-    <section data-transition="fade-in fade-out">
-        <h3>CRISP-DM revamped</h3>
-        <img
-            src="./img/WF101/02.png"
-            style="height:400px;"/>
-            <p>Data scientists solve important business problems.</p>
-    </section>
-
-    <section data-transition="fade-in fade-out">
-        <h3>CRISP-DM revamped</h3>
-        <img
-            src="./img/WF101/03.png"
-            style="height:400px;"/>
-            <p>A good way to start solving a problem is to prototype a solution in a
-            notebook.</p>
-    </section>
-
-    <section data-transition="fade-in fade-out">
-        <h3>CRISP-DM revamped</h3>
-        <img
-            src="./img/WF101/04.png"
-            style="height:400px;"/>
-        <p>There are great libraries available for machine learning that make
-        prototyping fun.</p>
-    </section>
-
-    <section data-transition="fade-in fade-out">
-        <h3>CRISP-DM revamped</h3>
-        <img
-            src="./img/WF101/05.png"
-            style="height:400px;"/>
-            <p>After the first experiments, it is a good idea to start keeping
-            track of models and data.</p>
-    </section>
-
-    <section data-transition="fade-in fade-out">
-        <h3>CRISP-DM revamped</h3>
-        <img
-            src="./img/WF101/06.png"
-            style="height:400px;"/>
-            <p>It can take a lot of work to get the latest data and keep the
+<section id="CRISP">
+    <!-- <section data-transition="fade-in fade-out"> -->
+  <h2>CRISP-DM revamped</h2>
+  <div class="r-stack">
+    <!-- Img 1 {{{4 -->
+    <div class="fragment fade-out" data-fragment-index="0" >
+      <img src="./img/WF101/01.png" alt="Here is a data scientist."/>
+      <p>Here is a data scientist.</p>
+    </div>
+    <!-- 4}}} -->
+    <!-- Img 2 {{{4 -->
+    <div class="fragment current-visible" data-fragment-index="0" >
+      <img src="./img/WF101/02.png" alt="Data scientists solve important business problems."/>
+      <p>Data scientists solve important business problems.</p>
+    </div>
+    <!-- 4}}} -->
+    <!-- Img 3 {{{4 -->
+    <div class="fragment current-visible">
+      <img src="./img/WF101/03.png"
+        alt="A good way to start solving a problem is to prototype a solution in a notebook."/>
+      <p>A good way to start solving a problem is to prototype a solution in a
+      notebook.</p>
+    </div>
+    <!-- 4}}} -->
+    <!-- Img 4 {{{4 -->
+    <div class="fragment current-visible">
+      <img src="./img/WF101/04.png"
+      alt="There are great libraries available for machine learning that make prototyping fun."/>
+      <p>There are great libraries available for machine learning that make
+      prototyping fun.</p>
+    </div>
+    <!-- 4}}} -->
+    <!-- Img 5 {{{4 -->
+    <div class="fragment current-visible">
+      <img src="./img/WF101/05.png"
+      alt="There are great libraries available for machine learning that make prototyping fun."/>
+      <p>After the first experiments, it is a good idea to start keeping track of models and data.</p>
+    </div>
+    <!-- 4}}} -->
+    <!-- Img 6 {{{4 -->
+    <div class="fragment current-visible">
+      <img src="./img/WF101/06.png"
+      alt="There are great libraries available for machine learning that make prototyping fun."/>
+      <p>It can take a lot of work to get the latest data and keep the
             models up to date reliably.</p>
-    </section>
-
-    <section data-transition="fade-in fade-out">
-        <h3>CRISP-DM revamped</h3>
-        <img
-            src="./img/WF101/07.png"
-            style="height:400px;"/>
-            <p>Production workflows should run on servers, not on a laptop.</p>
-    </section>
-
-    <section data-transition="fade-in fade-out">
-        <h3>CRISP-DM revamped</h3>
-        <img
-            src="./img/WF101/08.png"
-            style="height:400px;"/>
-            <p>These days, servers execute containers. Workflows need to be
-            packaged for execution.</p>
-    </section>
-
-    <section data-transition="fade-in fade-out">
-        <h3>CRISP-DM revamped</h3>
-        <img
-            src="./img/WF101/09.png"
-            style="height:400px;"/>
-            <p>Where should the results go? Sometimes they are deployed as
-            containers too.</p>
-    </section>
-
-    <section data-transition="fade-in fade-out">
-        <h3>CRISP-DM revamped</h3>
-        <img
-            src="./img/WF101/10.png"
-            style="height:400px;"/>
-            <p>Containerized models can be consumed by business applications.</p>
-    </section>
-
-    <section data-transition="fade-in fade-out">
-        <h3>CRISP-DM revamped</h3>
-        <img
-            src="./img/WF101/11.png"
-            style="height:400px;"/>
-            <p>Stakeholders evaluate the results. They want more models and
-            better models!</p>
-    </section>
+    </div>
+    <!-- 4}}} -->
+    <!-- Img 7 {{{4 -->
+    <div class="fragment current-visible">
+      <img src="./img/WF101/07.png"
+      alt="There are great libraries available for machine learning that make prototyping fun."/>
+      <p>Production workflows should run on servers, not on a laptop.</p>
+    </div>
+    <!-- 4}}} -->
+    <!-- Img 8 {{{4 -->
+    <div class="fragment current-visible">
+      <img src="./img/WF101/08.png"
+      alt="There are great libraries available for machine learning that make prototyping fun."/>
+      <p>These days, servers execute containers. Workflows need to be packaged for execution.</p>
+    </div>
+    <!-- 4}}} -->
+    <!-- Img 9 {{{4 -->
+    <div class="fragment current-visible">
+      <img src="./img/WF101/09.png"
+      alt="There are great libraries available for machine learning that make prototyping fun."/>
+      <p>Where should the results go? Sometimes they are deployed as containers too.</p>
+    </div>
+    <!-- 4}}} -->
+    <!-- Img 10 {{{4 -->
+    <div class="fragment current-visible" >
+      <img src="./img/WF101/10.png"
+      alt="There are great libraries available for machine learning that make prototyping fun."/>
+      <p>Containerized models can be consumed by business applications.</p>
+    </div>
+    <!-- 4}}} -->
+    <!-- Img 11 {{{4 -->
+    <div class="fragment">
+      <img src="./img/WF101/11.png"
+      alt="There are great libraries available for machine learning that make prototyping fun."/>
+      <p>Stakeholders evaluate the results. They want more models and better models!</p>
+    </div>
+    <!-- 4}}} -->
+  </div>
+</section>
+<!-- 3}}} -->
 
 </section>
 <!-- 3}}} -->
@@ -360,7 +401,7 @@ PID     USER     TT       CMD
 
 <!-- Apache Airflow {{{2 -->
 
-<section data-background="#268bd2">
+<section data-background="#dc322f">
     <h1>Apache Airflow</h1>
 </section>
 
@@ -416,49 +457,278 @@ PID     USER     TT       CMD
 </section>
 <!-- 3}}} -->
 
-<!-- 2}}} -->
-
-<!-- <section> -->
-<!--     <h2>Bla</h2> -->
-<!--     <!-1- <div style="background-color: blue;"> -1-> -->
-<!--   <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2431_RC04/embed_loader.js"></script> -->
-<!--   <script type="text/javascript"> -->
-<!--     trends.embed.renderExploreWidget("TIMESERIES", -->
-<!--         {"comparisonItem": [ -->
-<!--             {"keyword":"/m/0fdjtq","geo":"","time":"2004-01-01 2021-04-03"}, -->
-<!--             {"keyword":"/g/11b7lxp79d","geo":"","time":"2004-01-01 2021-04-03"} -->
-<!--             ],"category":0,"property":""}, -->
-<!--         { "guestPath":"https://trends.google.com:443/trends/embed/"}); -->
-<!--   </script> -->
-<!--   <!-1- </div> -1-> -->
-<!-- </section> -->
-
-
 <!-- Concepts {{{2 -->
 <section>
+  <section data-background="#268bd2">
+    <h2>Concepts</h2>
+  </section>
+  <!-- DAG {{{3 -->
   <section>
     <h3>DAG - Directed Acyclic Graph</h3>
-    <ul>
-      <li>Collection of all the tasks you want to run, organized in a way that
-        reflects their relationships and dependencies.</li>
-      <li> A DAG is defined in a Python script, which represents the DAGs
-        structure (tasks and their dependencies) as code. </li>
-    </ul>
+    <div class="r-stack">
+      <ul class="fragment fade-out" data-fragment-index="0" >
+        <li>Collection of all the tasks you want to run</li>
+        <li>reflects dags relationships and dependencies.</li>
+        <li>defined in a Python script (tasks and their dependencies) as code.</li>
+        <li>isn’t concerned with what its constituent tasks do</li>
+      </ul>
+      <blockquote class="fragment" data-fragment-index="0" >
+        Its job is to make sure that whatever tasks do happens at the right
+        time, or in the right order, or with the right handling of any
+        unexpected issues.
+      </blockquote>
+    </div>
   </section>
   <section >
-    <h3>Fit Text</h3>
-    <p>Resizes text to be as large as possible within its container.</p>
-        <pre><code class="python" data-trim data-line-numbers>
-        with DAG('my_dag', start_date=datetime(2016, 1, 1)) as dag:
-            task_1 = DummyOperator('task_1')
-            task_2 = DummyOperator('task_2')
-            task_1 >> task_2 # Define dependencies
-        </code></pre>
+    <h3>DAG - Directed Acyclic Graph</h3>
+    <div class="r-stack">
+      <div class="fragment fade-out" data-fragment-index="0">
+        <p>DAGs are created by instanciation of the <code>DAG</code>
+        class.</p>
+          <pre><code class="python" data-trim data-line-numbers="6">
+          from datetime import datetime
+
+          from airflow import DAG
+          from airflow.operators.dummy import DummyOperator
+
+          dag = DAG('my_dag', start_date=datetime(2021, 1, 1))
+
+          # Define some tasks
+          task_1 = DummyOperator(task_id='task_1', dag=dag)
+          task_2 = DummyOperator(task_id='task_2', dag=dag)
+
+          task_1 >> task_2 # Define dependencies
+          </code></pre>
+      </div>
+      <div class="fragment current-visible" data-fragment-index="0">
+        <p><code>DAG</code>s can be used as context managers to automatically assign new operators.</p>
+          <pre><code class="python" data-trim data-line-numbers="6">
+          from datetime import datetime
+
+          from airflow import DAG
+          from airflow.operators.dummy import DummyOperator
+
+          with DAG('my_dag', start_date=datetime(2021, 1, 1)) as dag:
+              # Define some tasks
+              task_1 = DummyOperator(task_id='task_1')
+              task_2 = DummyOperator(task_id='task_2')
+
+              task_1 >> task_2 # Define dependencies
+          </code></pre>
+      </div>
+      <div class="fragment">
+        <p>New API in Airflow 2: <i>TaskFlow API</i></p>
+
+          <pre><code class="python" data-trim data-line-numbers="6">
+          from datetime import datetime
+
+          from airflow.decorators import dag
+          from airflow.operators.dummy import DummyOperator
+
+          @dag(start_date=datetime(2021, 1, 1))
+          def my_dag():
+              # Define some tasks
+              task_1 = DummyOperator(task_id="task_1")
+              task_2 = DummyOperator(task_id="task_2")
+              task_1 >> task_2
+
+          must_be_in_global = my_dag()
+          </code></pre>
+      </div>
+    </div>
+
+  </section>
+    <!-- 3}}} -->
+
+  <!-- Operators {{{3 -->
+  <section>
+    <h3>Operators</h3>
+    <div class="r-stack">
+      <div class="fragment fade-out" data-fragment-index="0">
+        <ul>
+          <li>DAGs describe how to run a workflow, Operators determine what
+            actually gets done by a task</li>
+          <li>Generation of certain types of tasks.</li>
+          <li>Become nodes in the DAG when instantiated.</li>
+          <li>Derive from <code>BaseOperator</code> and inherit many attributes and methods.</li>
+        </ul>
+      </div>
+      <div class="fragment current-visible" data-fragment-index="0">
+        <h4>Three main kind of operators</h4>
+        <ul>
+          <li>Perform or trigger an action</li>
+          <li>Transfer data from one system to another</li>
+          <li>keep running until a certain criterion is met
+            (<b>Sensors</b>).<br/> <i>e.g. a specific file landing in
+            HDFS or S3 or, a partition appearing in Hive</i></li>
+        </ul>
+      </div>
+
+      <div class="fragment">
+          <pre class="r-stretch"><code class="python" data-trim data-line-numbers>
+          from airflow import DAG
+          from airflow.providers.http.operators.http import SimpleHttpOperator
+          from airflow.utils.dates import days_ago
+
+          with DAG("simplehttp01", schedule_interval="@once",
+              start_date=days_ago(0), tags=["http"]) as dag:
+
+              rest_call_ex01 = SimpleHttpOperator(
+                  task_id="rest-call-ex01",
+                  http_conn_id="http-disease.sh",
+                  endpoint="/v3/covid-19/nyt/states",
+                  method="GET",
+                  log_response=True,
+              )
+              rest_call_ex01
+          </code></pre>
+        </div>
+    </div>
+  </section>
+  <!-- 3}}} -->
+
+</section>
+
+  <!-- Task lifecycle {{{3 -->
+  <!-- http://airflow.apache.org/docs/apache-airflow/stable/concepts.html#task-lifecycle -->
+  <section>
+    <h3>Task lifecycle</h3>
+    <div class="r-stack">
+      <div class="fragment fade-out" data-fragment-index="0">
+
+        <p>Stages are displayed by a color in the UI
+        <img
+          src="img/airflow-task-status.png"
+              "UI tasks colors" /></p>
+
+        <h4>The happy flow</h4>
+        <ul>
+          <li>No status (empty task instance)</li>
+          <li>Scheduled (determined task instance needs to run)</li>
+          <li>Queued (task sent to executor to run on the queue)</li>
+          <li>Running (worker picked up a task)</li>
+          <li>Success (task completed)</li>
+          </ul>
+        </div>
+        <div class="fragment" data-fragment-index="0">
+
+        <p>The complete lifecycle of the task looks like this</p>
+        <img
+          src="http://airflow.apache.org/docs/apache-airflow/2.0.0/_images/task_lifecycle_diagram.png"
+          alt="Task lifecycle"
+          />
+        </div>
+      </div>
+  </section>
+
+  <!-- 3}}} -->
+
+  <!-- Scheduling {{{3 -->
+  <section>
+    <h3>Scheduling</h3>
+    <div class="r-stack">
+
+      <ul class="fragment fade-out" data-fragment-index="0">
+        <li>A <code>DAG run</code> contains task instances that run for a specific
+          <code>execution_date</code>.</li>
+        <li> The <code> execution_date </code> is the logical date and time which the DAG
+          Run.</li>
+        <li>This allows task instances to process data for the desired logical date
+          & time</li>
+      </ul>
+
+      <ul class="fragment current-visible" data-fragment-index="0">
+        <li>schedule_interval is defined as a DAG argument, which can be
+          passed a cron expression as a <code>str</code>, a <code>datetime.timedelta</code> object, or
+          a cron “presets”</li>
+      </ul>
+
+      <div class="fragment font-size-mid current-visible" data-markdown>
+        <script type="text/template">
+| preset          | meaning                                                         | cron            |
+| --------------- | -                                                               | -               |
+| ``None``        | Don't schedule, use for exclusively "externally triggered" DAGS |                 |
+| ``@once``       | Schedule once and only once                                     |                 |
+| ``@hourly``     | Run once an hour at the beginning of the hour                   | ``0 * * * *``   |
+| ``@daily``      | Run once a day at midnight                                      | ``0 0 * * *``   |
+| ``@weekly``     | Run once a week at midnight on Sunday morning                   | ``0 0 * * 0``   |
+| ``@monthly``    | Run once a month at midnight of the first day of the month      | ``0 0 1 * *``   |
+| ``@quarterly``  | Run once a quarter at midnight on the first day                 | ``0 0 1 */3 *`` |
+| ``@yearly``     | Run once a year at midnight of January 1                        | ``0 0 1 1 *``   |
+        </script>
+      </div>
+
+      <div class="fragment">
+        <h4><code>schedule_interval</code> example</h4>
+        <!-- <p>Resizes text to be as large as possible within its container.</p> -->
+            <pre><code class="python" data-trim data-line-numbers="7,11-12,14">
+              from airflow.models.dag import DAG
+              from airflow.operators.bash import BashOperator
+              from datetime import datetime, timedelta
+
+              default_args = { ... }
+
+              dag = DAG(
+                  'tutorial',
+                  description='A DAG running every day',
+                  default_args=default_args,
+                  start_date=datetime(2020, 12, 1),
+                  schedule_interval='@daily',
+                  catchup=False
+                  )
+            </code></pre>
+        </div>
+    </div>
     </section>
+    <!-- 3}}} -->
+
+  <!-- Workflows {{{3 -->
+
+  <section data-markdown>
+    <script type="text/template">
+    ### Workflows
+
+    - **DAG**: The work (tasks), and the order in which work should take place
+    - **DAG Run**: instance of a DAG for a particular logical date and time.
+    - **Operator**: class that acts as a template for carrying out some work.
+    - **Task**: specific instanciation of an operator.
+    - **Task Instance**: task assigned to a DAG run and associated state.
+    - **execution_date**: logical date/time for a DAG Run.
+    </script>
+  </section>
+
+  <!-- Xcoms 1 {{{3 -->
+  <section data-markdown>
+    <script type="text/template">
+    ### XComs (cross-communication)
+
+    - let tasks exchange messages between tasks
+    - defined by a key, value, and timestamp
+    - attributes like the task/DAG that created the XCom
+    - Any object that can be pickled (size!)
+
+    </script>
+  </section>
+  <!-- 3}}} -->
+
 </section>
 
 <!-- 2}}} -->
 
+<!-- KubernetesExecutor {{{3 -->
+<section data-background="#268bd2">
+  <h2><code>KubernetesExecutor</code></h2>
+</section>
+
+<!-- 3}}} -->
+
+<!-- Testing {{{ 3 -->
+<section data-background="#268bd2">
+  <h2>Testing</h2>
+  <!-- https://medium.com/wbaa/datas-inferno-7-circles-of-data-testing-hell-with-airflow-cef4adff58d8 -->
+</section>
+<!-- 3}}} -->
+<!-- 2}}} -->
       </div>
     </div>
     <!-- 1}}} -->
@@ -485,7 +755,11 @@ PID     USER     TT       CMD
             hideMissingTitles: true,
             useTextContentForMissingTitles: false,
             titleSelector: 'h1, h2'
-        }
+        },
+        <!-- dependencies: -->
+        <!--   [ -->
+        <!--       { src: 'plugin/title-footer/plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize(); } } -->
+    <!-- ] -->
         });
 
         Reveal.configure({
