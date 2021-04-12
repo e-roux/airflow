@@ -33,6 +33,18 @@ docker-compose up
 
 ## Source:
 
-- https://jvns.ca/blog/2016/10/10/what-even-is-a-container/
+- [Data’s Inferno: 7 Circles of Data Testing Hell with Airflow](https://medium.com/wbaa/datas-inferno-7-circles-of-data-testing-hell-with-airflow-cef4adff58d8)
+- [Airflow summit 2020: Testing Airflow workflows](https://www.youtube.com/watch?v=ANJnYbLwLjE)
+- https://livebook.manning.com/book/data-pipelines-with-apache-airflow
 - https://docs.metaflow.org/introduction/why-metaflow
 - https://en.wikipedia.org/wiki/Linux_namespaces
+- https://github.com/microservices-demo/microservices-demo
+- https://jvns.ca/blog/2016/10/10/what-even-is-a-container/
+- https://www.ibm.com/cloud/learn/containerization
+- https://www.ibm.com/cloud/learn/docker
+- https://www.pluralsight.com/blog/it-ops/docker-containers-take-over-world
+
+## Div
+
+Colors are from
+[Solarized](https://en.wikipedia.org/wiki/Solarized_(color_scheme))
