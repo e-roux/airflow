@@ -43,6 +43,7 @@ docker-compose up
 - https://www.ibm.com/cloud/learn/containerization
 - https://www.ibm.com/cloud/learn/docker
 - https://www.pluralsight.com/blog/it-ops/docker-containers-take-over-world
+- https://semaphoreci.com/blog/kubernetes-vs-docker
 
 ## Div
 

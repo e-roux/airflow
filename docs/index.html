@@ -30,10 +30,9 @@
       <div class="slides">
 
 <section id="main"
-         data-background-image="./img/bg01.png"
-         data-background-size='300px'
+         data-background-image="./img/bg03.png"
          data-background-repeat='repeat'
-         data-background-opacity=0.1>
+         data-background-opacity=0.05>
   <img
       src="./img/wordmark_1.svg"
       alt="airfow logo"
@@ -42,23 +41,78 @@
   <h1 style="font-size: 32px; color: #B2B2B2;">Python based workflow scheduler in a cloud context</h1>
 </section>
 
-<!-- Docker {{{2 -->
+<!-- Cloud {{{2 -->
+<section data-background="#cb3b16"
+         data-background-image="./img/bg01.png"
+         data-background-size='300px'
+         data-background-repeat='repeat'
+         data-background-opacity=0.2>
+  <h1>Stairway to Cloud™</h1>
+</section>
+
+<!-- Micro-services {{{3 -->
+
+<section>
+  <h2>Going to the cloud</h2>
+  <div class="r-stack">
+
+    <div class="fragment fade-out r-stretch" data-fragment-index="0">
+      <p>PaaS - Platform as a Service - or match apps requirements to a cloud product catalogue</p>
+      <img
+          src="https://www.pluralsight.com/content/pluralsight/en/blog/it-ops/doc/docker-containers-take-over-world/jcr:content/main/image/image-res.img.54b213b9-4c54-4af0-b1ba-d9b4c3be0f24.png"
+          alt="managed services"
+          height="400"
+        />
+    </div>
+
+  <div class="fragment current-visible r-stretch" data-fragment-index="0">
+      <p>IaaS - Infrastructure as a Service - or copy your infrastructure to
+      cloud VMs</p>
+    <img
+        src="https://www.pluralsight.com/content/pluralsight/en/blog/it-ops/doc/docker-containers-take-over-world/jcr:content/main/image_copy/image-res.img.9384a3b6-2e01-460e-b410-afcce4edeb78.png"
+        alt="managed services"
+        height="400"
+        />
+    </div>
+
+    <div class="fragment r-stretch">
+      <p>CaaS - Container as a Service - or break your monoliths in
+      microservices and go DevOps.</p>
+    <img
+        src="https://www.pluralsight.com/content/pluralsight/en/blog/it-ops/doc/docker-containers-take-over-world/jcr:content/main/image_1088073689/image-res.img.2795f210-48e2-45bf-9bd8-46bdf1f88f15.png"
+        alt="managed services"
+        height="400"
+        />
+    </div>
+
+  </div>
+  <a
+    href="https://www.pluralsight.com/blog/it-ops/docker-containers-take-over-world"
+    alt"Docker containers take over world"
+    >Source</a>
+
+</section>
+<!-- 3}}} -->
+
+<!-- 2}}} -->
+
+<!-- Docker/K8S {{{2 -->
 <section data-background="#cb4b16"
          data-background-image="./img/bg01.png"
          data-background-size='300px'
          data-background-repeat='repeat'
          data-background-opacity=0.2>
 
-  <h1>Stairway to containers</h1>
+  <h1>Highway to k8s®</h1>
 </section>
 
+<!-- Docker {{{3 -->
 <section>
 
-  <section data-background="#839496"
-           data-background-image="./img/bg01.png"
-           data-background-size='300px'
+  <section data-background="#268bd2"
+           data-background-image="./img/bg02.png"
            data-background-repeat='repeat'
-           data-background-opacity=0.2>
+           data-background-opacity=0.1>
     <h2 class='main'>Virtualization</h2>
   </section>
 
@@ -83,13 +137,13 @@
       <li>more reliability and security </li>
     </ul>
   </section>
+</section>
 
-  <section class="main"
-           data-background="#839496"
-           data-background-image="./img/bg01.png"
-           data-background-size='300px'
+<section>
+  <section data-background="#268bd2"
+           data-background-image="./img/bg02.png"
            data-background-repeat='repeat'
-           data-background-opacity=0.2>
+           data-background-opacity=0.1>
     <h2>Containerization</h2>
 </section>
 
@@ -156,8 +210,14 @@ PID     USER     TT       CMD
       src="https://wizardzines.com/zines/containers/samples/cgroups.jpg"
       alt="cgroups"/>
   </section>
+</section>
 
-  <section data-menu-title="Docker" data-background="#268bd2">
+<section>
+  <section data-background="#268bd2"
+           data-background-image="./img/bg02.png"
+           data-menu-title="Docker"
+           data-background-repeat='repeat'
+           data-background-opacity=0.1>
       <img src="./img/docker/moby.png" alt="Mody"/>
   </section>
 
@@ -165,17 +225,13 @@ PID     USER     TT       CMD
 
 ### Docker
 
-- A container image format
-- Method to :
-
-    - build container images (`docker build`)
-    - manage container images (`docker images`, `docker rm` , etc.)
-    - manage containers instances (docker ps, docker rm , etc.)
-    - share container images (docker push/pull)
-
-- A way to run containers (docker run)
-- Containers are implemented using Linux namespaces and cgroups
-
+- Manage container lifecycle.
+- Proxy requests to and from the containers.
+- Monitor and log container activity.
+- Mount shared directories.
+- Set resource limits on containers.
+- Build images. The Dockerfile is the de-facto format for building container images.
+- Push and pull images from registries.
 
 </section>
 
@@ -238,81 +294,55 @@ PID     USER     TT       CMD
       CODE!
     </aside>
   </section>
-
-  <section>
-    <img src="img/docker/containerd.png" alt="containerd"/>
-  </section>
-  </section>
-  <!-- 2}}} -->
-
-<!-- Kubernetes {{{2 -->
-<section data-background="#cb3b16"
-         data-background-image="./img/bg01.png"
-         data-background-size='300px'
-         data-background-repeat='repeat'
-         data-background-opacity=0.2>
-  <h1>Orchestration in K8S</h1>
 </section>
 
-<!-- Micro-services {{{3 -->
-
 <section>
-  <h2>Going to the cloud</h2>
-  <div class="r-stack">
+  <section data-background="#268bd2"
+           data-background-image="./img/bg02.png"
+           data-menu-title="Kubernetes"
+           data-background-repeat='repeat'
+           data-background-opacity=0.1>
+      <img src="./img/k8s.svg" alt="K8S"/>
+  </section>
+  <!-- 3}}} -->
+<!-- K8S {{{3 -->
 
-    <div class="fragment fade-out r-stretch" data-fragment-index="0">
-      <p>PaaS - Platform as a Service - or match apps requirements to a cloud product catalogue</p>
-      <img
-          src="https://www.pluralsight.com/content/pluralsight/en/blog/it-ops/doc/docker-containers-take-over-world/jcr:content/main/image/image-res.img.54b213b9-4c54-4af0-b1ba-d9b4c3be0f24.png"
-          alt="managed services"
-          height="400"
-        />
-    </div>
-
-  <div class="fragment current-visible r-stretch" data-fragment-index="0">
-      <p>IaaS - Infrastructure as a Service - or copy your infrastructure to
-      cloud VMs</p>
-    <img
-        src="https://www.pluralsight.com/content/pluralsight/en/blog/it-ops/doc/docker-containers-take-over-world/jcr:content/main/image_copy/image-res.img.9384a3b6-2e01-460e-b410-afcce4edeb78.png"
-        alt="managed services"
-        height="400"
-        />
-    </div>
-
-    <div class="fragment r-stretch">
-      <p>CaaS - Container as a Service - or break your monoliths in
-      microservices and go DevOps.</p>
-    <img
-        src="https://www.pluralsight.com/content/pluralsight/en/blog/it-ops/doc/docker-containers-take-over-world/jcr:content/main/image_1088073689/image-res.img.2795f210-48e2-45bf-9bd8-46bdf1f88f15.png"
-        alt="managed services"
-        height="400"
-        />
-    </div>
-
-  </div>
-  <a
-    href="https://www.pluralsight.com/blog/it-ops/docker-containers-take-over-world"
-    alt"Docker containers take over world"
-    >Source</a>
-
-</section>
-<!-- 3}}} -->
-
-<section>
   <section>
     <h3>Kubernetes</h3>
-    <img src="./img/k8s/ever-given.jpg" style="height:500px"
-        alt="K8S for beginners" />
-    </section>
+    <ul>
+      <li><b>Pods</b> logical groups of containers sharing resources (memory, CPU, storage, and network).</li>
+      <li><b>Auto-scaling</b> automatic adaptation to changing workloads by starting and stopping pods as needed.</li>
+      <li><b>Self-healing</b> monitoring/restart of containers on failure. or healthcheck.</li>
+      <li><b>Load-balancing</b> requests are distributed over the healthy available pods.</li>
+      <li><b>Rollouts</b> automated rollouts and rollbacks, e.g. procedures like Canary and Blue-Green releases.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>K8S Architecture</h3>
+
+    <img
+      src="https://d33wubrfki0l68.cloudfront.net/2475489eaf20163ec0f54ddc1d92aa8d4c87c96b/e7c81/images/docs/components-of-kubernetes.svg"
+      alt="K8S architecture"/>
+
+  </section>
+
   <section>
     <iframe
       data-src="https://landscape.cncf.io/?fullscreen=yes"
       style="width:80vw;height:80vh;"
       data-preload></iframe>
   </section>
-</section>
 
-<!-- 2}}} -->
+  <section>
+    <h3>Kubernetes</h3>
+    <img src="./img/k8s/ever-given.jpg" style="height:500px"
+        alt="K8S for beginners" />
+  </section>
+
+  <!-- 3}}} -->
+</section>
+  <!-- 2}}} -->
 
 <!-- Data pipelines {{{2 -->
 <section data-background="#cb3b16"
@@ -418,18 +448,19 @@ PID     USER     TT       CMD
 
 # Common OSS
 
-| Name        | Origin          | DAGS         | Source       | Scheduler    | Backfill      | UI     | platform   | Scalable                 | License |
-| :---------- | --------------- | ------------ | ------------ | :----------: | :-----------: | :----: | :--------: | :----------------------: | -       |
-| [Airflow]   | Airbnb          | Python       | Python       | ✓            | ✓             | ✓      | -          | ✓                        | Apache  |
-| [Argo]      | Applatix        | YAML         | Go           | 3rd party    |               | ✓      | K8S        | ✓                        | Apache  |
-| [Azkaban]   | LinkedIn        | YAML         | Java         | ✓            |               | ✓      | -          |                          | Apache  |
-| [Conductor] | Netflix         | JSON         | Java         |              |               | ✓      | -          | ✓                        | Apache  |
-| [Dolphin]   |                 | UI           | Java         | ✓            | ✓             | ✓      | -          | ✓                        | Apache  |
-| [Luigi]     | Spotify         | Python       | Python       |              | ✓             | ✓      | -          | ✓                        | Apache  |
-| [Make]      | -               | Custom       | C            |              |               |        | -          |                          | GPLv3   |
-| [Metaflow]  | Netflix         | Python       | Python       |              |               |        | -          | ✓                        | Apache  |
-| [Nifi]      | NSA             | UI           | Java         | ✓            |               | ✓      | -          | ✓                        | Apache  |
-| [Oozie]     | -               | XML          | Java         | ✓            | ✓             | ✓      | Hadoop     | ✓                        | Apache  |
+| Name        | Origin          | DAGS         | Source       | Scheduler    | Backfill      | UI     | platform   | Scalable   | License |
+| :---------- | --------------- | ------------ | ------------ | :----------: | :-----------: | :----: | :--------: | :--------: | -       |
+| [Airflow]   | Airbnb          | Python       | Python       | ✓            | ✓             | ✓      | -          | ✓          | Apache  |
+| [Argo]      | Applatix        | YAML         | Go           | 3rd party    |               | ✓      | K8S        | ✓          | Apache  |
+| [Azkaban]   | LinkedIn        | YAML         | Java         | ✓            |               | ✓      | -          |            | Apache  |
+| [Conductor] | Netflix         | JSON         | Java         |              |               | ✓      | -          | ✓          | Apache  |
+| [Dolphin]   |                 | UI           | Java         | ✓            | ✓             | ✓      | -          | ✓          | Apache  |
+| [Luigi]     | Spotify         | Python       | Python       |              | ✓             | ✓      | -          | ✓          | Apache  |
+| [Make]      | -               | Custom       | C            |              |               |        | -          |            | GPLv3   |
+| [Metaflow]  | Netflix         | Python       | Python       |              |               |        | -          | ✓          | Apache  |
+| [Nifi]      | NSA             | UI           | Java         | ✓            |               | ✓      | -          | ✓          | Apache  |
+| [Oozie]     | -               | XML          | Java         | ✓            | ✓             | ✓      | Hadoop     | ✓          | Apache  |
+| [Prefect]   | Prefect         | Python       | Python       | ✓            | ✓             | ✓      | -          | ✓          | Apache  |
 
 
 [Airflow]: https://airflow.apache.org "Airflow"
@@ -442,6 +473,7 @@ PID     USER     TT       CMD
 [Metaflow]: https://metaflow.org/ "Metaflow"
 [Nifi]: https://nifi.apache.org/ "Apache Nifi"
 [Oozie]: https://oozie.apache.org/ "Apache Oozie"
+[Prefect]: https://prefect.io/ "Prefect"
 
 </script>
 
@@ -544,7 +576,7 @@ PID     USER     TT       CMD
 </section>
 <!-- 2}}} -->
 
-<!-- Concepts {{{2 -->
+<!-- Concepts {{{3 -->
 <section>
   <section data-background="#268bd2"
           data-background-image="./img/bg01.png"
@@ -553,7 +585,7 @@ PID     USER     TT       CMD
           data-background-opacity=0.2>
     <h2>Concepts</h2>
   </section>
-  <!-- DAGs {{{3 -->
+  <!-- DAGs {{{4 -->
   <section>
     <h3>DAG - Directed Acyclic Graph</h3>
     <div class="r-stack">
@@ -646,9 +678,9 @@ PID     USER     TT       CMD
       </code></pre>
   </section>
 
-    <!-- 3}}} -->
+    <!-- 4}}} -->
 
-  <!-- Operators {{{3 -->
+  <!-- Operators {{{4 -->
   <section>
     <h3>Operators</h3>
     <div class="r-stack">
@@ -693,7 +725,7 @@ PID     USER     TT       CMD
         </div>
     </div>
   </section>
-  <!-- 3}}} -->
+  <!-- 4}}} -->
 
 </section>
 
