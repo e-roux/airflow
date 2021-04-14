@@ -1027,6 +1027,19 @@ PID     USER     TT       CMD
            data-background-opacity=0.9>
     <h3>Information exchange within workflow</h3>
   </section>
+  <section>
+  <h3>Variables</h3>
+  <p>generic way to store and retrieve arbitrary content or settings as a simple
+  key value store.</p>
+
+  <pre class=""><code class="python" data-trim data-line-numbers>
+from airflow.models import Variable
+foo = Variable.get("foo")
+bar = Variable.get("bar", deserialize_json=True)
+baz = Variable.get("baz", default_var=None)
+  </code></pre>
+  </section>
+
   <section data-markdown>
     <script type="text/template">
     ### XComs (cross-communication)
@@ -1038,6 +1051,18 @@ PID     USER     TT       CMD
 
     </script>
   </section>
+  <section>
+    <h3>XComs exchange</h3>
+
+    <ul>
+      <li>Xcoms can be “pushed” (sent) or “pulled” (received)</li>
+      <li><code>xcom_push()</code> and <code>xcom_pull()</code> methods</li>
+      <li>on push, a task makes it generally available to other tasks</li>
+      <li>persistence is ensured with DB write: limited size</li>
+      <li>task return values are automatically pushed.</li>
+      </ul>
+    </section>
+
 </section>
   <!-- 3}}} -->
 
