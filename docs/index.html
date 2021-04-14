@@ -1,3 +1,18 @@
+<!-- Copyright 2021 Emmanuel Roux. -->
+
+<!-- Licensed under the Apache License, Version 2.0 (the "License"); -->
+<!-- you may not use this file except in compliance with the License. -->
+<!-- You may obtain a copy of the License at -->
+
+<!--     http://www.apache.org/licenses/LICENSE-2.0 -->
+
+<!-- Unless required by applicable law or agreed to in writing, software -->
+<!-- distributed under the License is distributed on an "AS IS" BASIS, -->
+<!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. -->
+<!-- See the License for the specific language governing permissions and -->
+<!-- limitations under the License. -->
+
+
 <!DOCTYPE html>
 <html lang="en">
   <!-- Head {{{1 -->
@@ -47,12 +62,13 @@
          data-background-size='300px'
          data-background-repeat='repeat'
          data-background-opacity=0.2>
-  <h1>Stairway to Cloud™</h1>
+  <h1>Stairway to (the) Cloud™</h1>
 </section>
 
 <!-- Micro-services {{{3 -->
 
 <section>
+  <h1>Bla</h1>
   <h2>Going to the cloud</h2>
   <div class="r-stack">
 
@@ -113,7 +129,7 @@
            data-background-image="./img/bg02.png"
            data-background-repeat='repeat'
            data-background-opacity=0.1>
-    <h2 class='main'>Virtualization</h2>
+    <h2>Virtualization</h2>
   </section>
 
   <section>
@@ -519,10 +535,9 @@ PID     USER     TT       CMD
 <!-- Architecture {{{3 -->
 <section>
   <section data-background="#268bd2"
-          data-background-image="./img/bg01.png"
-          data-background-size='300px'
-          data-background-repeat='repeat'
-          data-background-opacity=0.2>
+           data-background-image="./img/bg02.png"
+           data-background-repeat='repeat'
+           data-background-opacity=0.1>
     <h2>Architecture</h2>
   </section>
 <section>
@@ -542,12 +557,11 @@ PID     USER     TT       CMD
 
 <!-- Installation {{{2 -->
 <section>
-  <section data-background="#268bd2"
-            data-background-image="./img/bg01.png"
-            data-background-size='300px'
-            data-background-repeat='repeat'
-            data-background-opacity=0.2>
 
+  <section data-background="#268bd2"
+           data-background-image="./img/bg02.png"
+           data-background-repeat='repeat'
+           data-background-opacity=0.1>
     <h2>Installation</h2>
   </section>
   <section>
@@ -579,10 +593,9 @@ PID     USER     TT       CMD
 <!-- Concepts {{{3 -->
 <section>
   <section data-background="#268bd2"
-          data-background-image="./img/bg01.png"
-          data-background-size='300px'
-          data-background-repeat='repeat'
-          data-background-opacity=0.2>
+           data-background-image="./img/bg02.png"
+           data-background-repeat='repeat'
+           data-background-opacity=0.1>
     <h2>Concepts</h2>
   </section>
   <!-- DAGs {{{4 -->
@@ -729,41 +742,17 @@ PID     USER     TT       CMD
 
 </section>
 
-  <!-- Task lifecycle {{{3 -->
+  <!-- Task scheduling and lifecycle {{{3 -->
   <!-- http://airflow.apache.org/docs/apache-airflow/stable/concepts.html#task-lifecycle -->
+
   <section>
-    <h3>Task lifecycle</h3>
-    <div class="r-stack">
-      <div class="fragment fade-out" data-fragment-index="0">
-
-        <p>Stages are displayed by a color in the UI
-        <img
-          src="img/airflow-task-status.png"
-              "UI tasks colors" /></p>
-
-        <h4>The happy flow</h4>
-        <ul>
-          <li>No status (empty task instance)</li>
-          <li>Scheduled (determined task instance needs to run)</li>
-          <li>Queued (task sent to executor to run on the queue)</li>
-          <li>Running (worker picked up a task)</li>
-          <li>Success (task completed)</li>
-          </ul>
-        </div>
-        <div class="fragment" data-fragment-index="0">
-
-        <p>The complete lifecycle of the task looks like this</p>
-        <img
-          src="http://airflow.apache.org/docs/apache-airflow/2.0.0/_images/task_lifecycle_diagram.png"
-          alt="Task lifecycle"
-          />
-        </div>
-      </div>
+  <section data-background="#268bd2"
+           data-background-image="./img/bg02.png"
+           data-background-repeat='repeat'
+           data-background-opacity=0.1>
+    <h2>Task scheduling and lifecycle</h2>
   </section>
-
-  <!-- 3}}} -->
-
-  <!-- Scheduling {{{3 -->
+  <!-- Scheduling {{{4 -->
   <section>
     <h3>Scheduling</h3>
     <div class="r-stack">
@@ -820,7 +809,43 @@ PID     USER     TT       CMD
         </div>
     </div>
     </section>
-    <!-- 3}}} -->
+    <!-- 4}}} -->
+
+  <!-- Task lifecycle {{{4 -->
+  <section>
+    <h3>Task lifecycle</h3>
+    <div class="r-stack">
+      <div class="fragment fade-out" data-fragment-index="0">
+
+        <p>Stages are displayed by a color in the UI
+        <img
+          src="img/airflow-task-status.png"
+              "UI tasks colors" /></p>
+
+        <h4>The happy flow</h4>
+        <ul>
+          <li>No status (empty task instance)</li>
+          <li>Scheduled (determined task instance needs to run)</li>
+          <li>Queued (task sent to executor to run on the queue)</li>
+          <li>Running (worker picked up a task)</li>
+          <li>Success (task completed)</li>
+          </ul>
+        </div>
+        <div class="fragment" data-fragment-index="0">
+
+        <p>The complete lifecycle of the task looks like this</p>
+        <img
+          src="http://airflow.apache.org/docs/apache-airflow/2.0.0/_images/task_lifecycle_diagram.png"
+          alt="Task lifecycle"
+          />
+        </div>
+      </div>
+  </section>
+<!-- 4}}} -->
+
+  </section>
+  <!-- 3}}} -->
+
 
   <!-- Workflows {{{3 -->
 
@@ -857,10 +882,9 @@ PID     USER     TT       CMD
 
 <!-- KubernetesExecutor {{{3 -->
   <section data-background="#268bd2"
-            data-background-image="./img/bg01.png"
-            data-background-size='300px'
-            data-background-repeat='repeat'
-            data-background-opacity=0.2>
+           data-background-image="./img/bg02.png"
+           data-background-repeat='repeat'
+           data-background-opacity=0.1>
   <h2><code>KubernetesExecutor</code></h2>
 </section>
 
@@ -868,10 +892,9 @@ PID     USER     TT       CMD
 
 <!-- Testing {{{ 3 -->
   <section data-background="#268bd2"
-            data-background-image="./img/bg01.png"
-            data-background-size='300px'
-            data-background-repeat='repeat'
-            data-background-opacity=0.2>
+           data-background-image="./img/bg02.png"
+           data-background-repeat='repeat'
+           data-background-opacity=0.1>
   <h2>Testing</h2>
   <!-- https://medium.com/wbaa/datas-inferno-7-circles-of-data-testing-hell-with-airflow-cef4adff58d8 -->
 </section>
