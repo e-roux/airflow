@@ -504,7 +504,8 @@ PID     USER     TT       CMD
       data flowing between operations.
       - share some features of functional languages, more suitable
       for numeric processing.
-      - architecture, based on an indeterministic machine paradigm.
+      - analogy to series of workers on an assembly line.
+      - operations are only concerned with the availability of data inputs.
       - pioneered by Jack Dennis at MIT in the 1960s.
   </script>
 </section>
@@ -662,20 +663,29 @@ PID     USER     TT       CMD
       <div class="fragment">
         <p>New API in Airflow 2: <i>TaskFlow API</i></p>
 
-          <pre><code class="python" data-trim data-line-numbers>
-          from datetime import datetime
+          <pre><code class="python" data-trim
+                     data-line-numbers style="font-size:large;line-height:18px;">
+from airflow.decorators import dag, task
+from airflow.operators.python import get_current_context
+from airflow.utils.dates import days_ago
 
-          from airflow.decorators import dag
-          from airflow.operators.dummy import DummyOperator
 
-          @dag(start_date=datetime(2021, 1, 1))
-          def my_dag():
-              # Define some tasks
-              task_1 = DummyOperator(task_id="task_1")
-              task_2 = DummyOperator(task_id="task_2")
-              task_1 >> task_2
+@dag(schedule_interval=None, start_date=days_ago(0))
+def hello_taskflow_api(who: str = "world"):
+    @task
+    def whom() -> str:
+        context = get_current_context()
+        return context["params"]["who"].capitalize()
 
-          must_be_in_global = my_dag()
+    @task
+    def my_cust_print(value: str) -> str:
+        return f"Hello {value}" # Hello World in Xcom
+
+    whom_to_say_hello = whom()
+    cust_print = my_cust_print(whom_to_say_hello)
+
+
+hello = hello_taskflow_api()
           </code></pre>
       </div>
     </div>
@@ -1006,7 +1016,7 @@ PID     USER     TT       CMD
 
   <!-- Information exchange within workflow {{{3 -->
 
-  <section>
+<section>
 <section data-background="#6c71c4"
            data-background-image="./img/bg04.png"
            data-background-repeat='repeat'
@@ -1073,8 +1083,205 @@ baz = Variable.get("baz", default_var=None)
 </section>
   <!-- 3}}} -->
 
+  <!-- Additional informations {{{3 -->
+<section>
+<section data-background="#6c71c4"
+           data-background-image="./img/bg04.png"
+           data-background-repeat='repeat'
+           data-background-opacity=0.9>
+    <h3>Additional concepts</h3>
+  </section>
+
+  <section>
+    <h3>Connections</h3>
+    <ul>
+    <li>keep authentication code and information out of pipelines, centralized
+      in the metadata database.</li>
+      <li>Managed in the UI or cli.</li>
+    <li>A <code>conn_id</code> is defined there, and hostname / login / password / schema information attached to it.</li>
+    </ul>
+    </section>
+
+  <section>
+    <h3>Hooks</h3>
+    <ul>
+      <li>Interfaces to external platforms and databases like Hive, S3, MySQL,
+        Postgres, HDFS, and Pig.</li>
+      <li>Implement a common interface when possible, and act as a building
+        block for operators.</li>
+    <li>Host and authentication information use from <code>airflow.models.connection.Connection</code></li>
+    </ul>
+    </section>
+
+    <section>
+      <h3>Branching</h3>
+
+    <div class="r-stack">
+<img  class="fragment fade-out" data-fragment-index="0"
+   src="https://airflow.apache.org/docs/apache-airflow/stable/_images/branch_note.png"
+  alt="branching"/>
+
+          <pre class="fragment r-stretch" data-fragment-index='0' style="font-size:large;line-height:18px;"><code class="python" data-trim data-line-numbers>
+def branch_func(ti):
+    xcom_value = int(ti.xcom_pull(task_ids='run_this_first'))
+    if xcom_value >= 5:
+        return 'branch_a'
+    else:
+        return 'branch_b'
+
+start_op = BashOperator(
+    task_id='run_this_first',
+    bash_command="echo 5",
+    xcom_push=True,
+    dag=dag)
+
+branch_op = BranchPythonOperator(
+    task_id='branching',
+    python_callable=branch_func,
+    dag=dag)
+
+continue_op = DummyOperator(task_id='branch_a', dag=dag)
+stop_op = DummyOperator(task_id='branch_b', dag=dag)
+...
+</code></pre>
+    </section>
+
+    <section>
+      <h3>SubDag</h3>
+      <p>For repeating patterns, defined with function that returns a DAG object
+      </p>
+  <img
+  src="https://airflow.apache.org/docs/apache-airflow/stable/_images/subdag_before.png"
+  alt=SubDAG"/>
+    </section>
+
+    <section>
+      <h3>TaskGroup</h3>
+      <p>Used to organize tasks into hierarchical groups in Graph View.
+      </p>
+  <img
+  src="https://airflow.apache.org/docs/apache-airflow/stable/_images/task_group.gif"
+  alt=TaskGroup"/>
+    </section>
+
+
+ <section data-markdown>
+  <script type="text/template">
+  ### Trigger rules
+
+    **all_success**: (default) all parents have succeeded
+    **all_failed**: all parents are in a failed or upstream_failed state
+    **all_done**: all parents are done with their execution
+    ...
+  </script>
+</section>
+
+<section>
+  <h3>Custom <code>Operators</code></h3>
+
+<pre style="font-size:large;line-height:18px;"><code class="python" data-trim data-line-numbers>
+from airflow.models.baseoperator import BaseOperator
+from airflow.utils.decorators import apply_defaults
+
+class HelloOperator(BaseOperator):
+
+    @apply_defaults
+    def __init__(
+            self,
+            name: str,
+            **kwargs) -> None:
+        super().__init__(**kwargs)
+        self.name = name
+
+    def execute(self, context):
+        message = "Hello {}".format(self.name)
+        print(message)
+        return message
+</code></pre>
+
+</section>
+
+
+</section>
+  <!-- 3}}} -->
 
 <!-- 2}}} -->
+
+<!-- Template {{{ 3 -->
+<section>
+  <section data-background="#268bd2"
+           data-background-image="./img/bg02.png"
+           data-background-repeat='repeat'
+           data-background-opacity=0.1>
+  <h2>Template</h2>
+  </section>
+
+  <section>
+    <h3>Jinja templating</h3>
+<p>Airflow leverages the power of Jinja Templating</p>
+
+<pre><code class="python" data-trim data-line-numbers>
+from airflow.models.baseoperator import BaseOperator
+# The execution date as YYYY-MM-DD
+
+date = "{{ ds }}"
+t = BashOperator(
+    task_id='test_env',
+    bash_command='/tmp/test.sh ',
+    dag=dag,
+    env={'EXECUTION_DATE': date})
+</code></pre>
+
+  </section>
+
+<section class="font-size-mid" data-markdown>
+  <script type="text/template">
+###  Template variables and macros
+
+<p>Variables defined by Airflow (example)</p>
+
+| Variable          | Description                        |
+| -                 | -                                  |
+| `{{ ds }}`        | the execution date as `YYYY-MM-DD` |
+| `{{ ds_nodash }}` | the execution date as `YYYYMMDD`   |
+
+
+<p>Macros defined by Airflow (example)</p>
+
+| Macros               | Description                               |
+| -------------------- | ----------------------------------------- |
+| `macros.datetime`    | The standard lib's `datetime.datetime`    |
+| `macros.timedelta`   | The standard lib's `datetime.timedelta`   |
+
+<p>Xcoms</p>
+
+  </script>
+
+
+  </section>
+<section>
+  <h3>Custom <code>Operators</code> with templating</h3>
+
+<pre style="font-size:large;line-height:18px;"><code class="python" data-trim data-line-numbers>
+class MyRequestOperator(BaseOperator):
+    template_fields = ['request_body']
+    template_fields_renderers = {'request_body': 'json'}
+
+    @apply_defaults
+    def __init__(
+            self,
+            request_body: str,
+            **kwargs) -> None:
+        super().__init__(**kwargs)
+        self.request_body = request_body
+</code></pre>
+
+<p>Currently available lexers: <br/>
+bash doc json md py rst sql yaml<p>
+
+</section>
+  </section>
+  <!-- 3}}} -->
 
 <!-- Executor {{{3 -->
 <section>
@@ -1137,14 +1344,14 @@ baz = Variable.get("baz", default_var=None)
   <!-- https://medium.com/wbaa/datas-inferno-7-circles-of-data-testing-hell-with-airflow-cef4adff58d8 -->
   </section>
   <section>
-  <h2>DAG Loader Test</h2>
+  <h3>DAG Loader Test</h3>
     <pre><code class="python" data-trim>
     ❯ python your-dag-file.py
     </code></pre>
   </section>
 
   <section>
-  <h2>Unit tests for <code>DAG</code> structure</h2>
+  <h3>Unit tests for <code>DAG</code> structure</h3>
     <pre><code class="python" data-trim data-line-numbers>
 from airflow.models import DagBag
 import unittest
@@ -1163,7 +1370,7 @@ class TestHelloWorldDAG(unittest.TestCase):
 </section>
 
   <section>
-  <h2>Unit tests for <code>DAG</code> structure</h2>
+  <h3>Unit tests for custom <code>Operator</code></h3>
     <pre><code class="python" data-trim data-line-numbers
     style="font-size:large; line-height: 20px;">
 import unittest
