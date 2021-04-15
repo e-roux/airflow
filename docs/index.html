@@ -546,7 +546,7 @@ PID     USER     TT       CMD
     <!--     content: "Apache Airflow"; background:white; -->
     <!-- } -->
     <!-- </style> -->
-    <h3>Architecture: LocalExecutor</h3>
+    <h3>Global architecture</h3>
 
     <object type="image/svg+xml" data="./img/arch-diag-basic.svg"
         style="height:500px"></object>
@@ -1076,24 +1076,120 @@ baz = Variable.get("baz", default_var=None)
 
 <!-- 2}}} -->
 
-<!-- KubernetesExecutor {{{3 -->
+<!-- Executor {{{3 -->
+<section>
   <section data-background="#268bd2"
            data-background-image="./img/bg02.png"
            data-background-repeat='repeat'
            data-background-opacity=0.1>
-  <h2><code>KubernetesExecutor</code></h2>
-</section>
+    <h2><code>Executors</code></h2>
+  </section>
+  <section>
+    <h3>Executors</h3>
+    <div class="r-stack">
 
+      <ul class="fragment fade-out" data-fragment-index="0">
+      <li><code>SequentialExecutor</code>: default executor, runs <code>sqlite</code>.
+        As it supports only one connection, it run one task instance at a
+        time</li>
+      <li><code>LocalExecutor</code>: runs tasks by spawning processes in a
+        controlled fashion. Unlimited and limited parallelism possible (usage of
+        queues)</li>
+      </ul>
+      <ul class="fragment" data-fragment-index="0">
+      <li><code>CeleryExecutor</code>: tasks are delivered to
+        <code>Celery</code>, distributed task queue.</li>
+      <li><code>KubernetesExecutor</code> tasks are pods on
+      Kubernetes</li>
+    <li><code>CeleryKubernetesExecutor</code>: low latency tasks can be send to
+    <code>Celery</code> when bigger loads can be sent to <code>Kubernetes</code></li>
+    </ul>
+    </div>
+  </section>
+
+<section>
+  <h3><code>KubernetesExecutor</code></h3>
+  <img
+    src="https://airflow.apache.org/docs/apache-airflow/stable/_images/arch-diag-kubernetes.png"
+    height="400px" alt="KubernetesExecutor"/>
+  </section>
+
+
+<section>
+  <h3>Log and Monitoring architecture</h3>
+  <img
+    src="https://airflow.apache.org/docs/apache-airflow/stable/_images/arch-diag-logging.png"
+    height="500px" alt="KubernetesExecutor"/>
+  </section>
+
+
+
+</section>
 <!-- 3}}} -->
 
 <!-- Testing {{{ 3 -->
+<section>
   <section data-background="#268bd2"
            data-background-image="./img/bg02.png"
            data-background-repeat='repeat'
            data-background-opacity=0.1>
   <h2>Testing</h2>
   <!-- https://medium.com/wbaa/datas-inferno-7-circles-of-data-testing-hell-with-airflow-cef4adff58d8 -->
+  </section>
+  <section>
+  <h2>DAG Loader Test</h2>
+    <pre><code class="python" data-trim>
+    ❯ python your-dag-file.py
+    </code></pre>
+  </section>
+
+  <section>
+  <h2>Unit tests for <code>DAG</code> structure</h2>
+    <pre><code class="python" data-trim data-line-numbers>
+from airflow.models import DagBag
+import unittest
+
+class TestHelloWorldDAG(unittest.TestCase):
+   @classmethod
+   def setUpClass(cls):
+       cls.dagbag = DagBag()
+
+   def test_dag_loaded(self):
+       dag = self.dagbag.get_dag(dag_id='hello_world')
+       assert self.dagbag.import_errors == {}
+       assert dag is not None
+       assert len(dag.tasks) == 1
+    </code></pre>
 </section>
+
+  <section>
+  <h2>Unit tests for <code>DAG</code> structure</h2>
+    <pre><code class="python" data-trim data-line-numbers
+    style="font-size:large; line-height: 20px;">
+import unittest
+from airflow.utils.state import State
+
+DEFAULT_DATE = '2019-10-03'
+TEST_DAG_ID = 'test_my_custom_operator'
+
+class MyCustomOperatorTest(unittest.TestCase):
+   def setUp(self):
+       self.dag = DAG(TEST_DAG_ID, schedule_interval='@daily', default_args={'start_date' : DEFAULT_DATE})
+       self.op = MyCustomOperator(
+           dag=self.dag,
+           task_id='test',
+           prefix='s3://bucket/some/prefix',
+       )
+       self.ti = TaskInstance(task=self.op, execution_date=DEFAULT_DATE)
+
+   def test_execute_no_trigger(self):
+       self.ti.run(ignore_ti_state=True)
+       assert self.ti.state == State.SUCCESS
+       # Assert something related to tasks results
+    </code></pre>
+</section>
+</section>
+
 <!-- 3}}} -->
 <!-- 2}}} -->
       </div>
