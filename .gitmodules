@@ -4,3 +4,4 @@
 [submodule "reveal-title-footer"]
 	path = docs/plugin/title-footer
 	url = https://github.com/e-gor/Reveal.js-Title-Footer.git
+	ignore = dirty
