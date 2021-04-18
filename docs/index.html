@@ -555,7 +555,7 @@ PID     USER     TT       CMD
 </section>
 <!-- 3}}} -->
 
-<!-- Installation {{{2 -->
+<!-- Installation {{{3 -->
 <section>
 
   <section data-background="#268bd2"
@@ -570,9 +570,11 @@ PID     USER     TT       CMD
         <li>in a virtual environment with pip
 <pre><code class="terminal">❯ virtualenv myenv
 ❯ source myenv/bin/activate
+❯ pip install apache-airflow==2.0.1 --constraint \
+    https://git.io/JOEb2
 ❯ pip install apache-airflow
 # Or simply with pipx
-❯ pipx install apache-airflow
+❯ pipx install apache-airflow==2.0.1
 </code></pre>
         </li>
         <li>Runing inside docker, from within this repository
@@ -588,7 +590,7 @@ PID     USER     TT       CMD
       </ul>
   </section>
 </section>
-<!-- 2}}} -->
+<!-- 3}}} -->
 
 <!-- Concepts {{{3 -->
   <section data-background="#268bd2"
